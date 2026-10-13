@@ -1,3 +1,5 @@
 .DS_Store
 .fuse_hidden*
 _backup-*/
+~$*
+.~lock.*
