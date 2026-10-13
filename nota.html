@@ -1,0 +1,605 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nota for M&amp;T Bank · Andrea Noble</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600;1,6..72,700&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFFFFF;
+  --ink:#1C231F;
+  --ink-2:#3A4A3F;
+  --muted:#7C8579;
+  --rule:#DCD3BE;
+  --accent:#AAAA46;
+  --accent-soft:#AAAA46;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+html,body{margin:0;padding:0}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:'Newsreader',Georgia,serif;
+  font-size:18px;line-height:1.6;
+  font-feature-settings:"liga","kern";
+}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--accent);color:#fff}
+
+/* ---------- nav ---------- */
+.nav{border-bottom:1px solid var(--rule);background:var(--bg)}
+.nav-inner{
+  max-width:1180px;margin:0 auto;padding:22px 40px;
+  display:flex;align-items:center;justify-content:space-between;gap:24px;
+}
+.logo img{height:26px;width:auto;display:block}
+.nav-links{display:flex;gap:28px}
+.nav-links a{
+  font-family:'Work Sans',sans-serif;font-weight:600;
+  font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink-2);
+}
+.nav-links a:hover{color:var(--accent)}
+
+/* ---------- hero ---------- */
+.hero{max-width:1180px;margin:0 auto;padding:47px 40px 27px}
+.back{
+  font-family:'Work Sans',sans-serif;font-weight:600;
+  font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--muted);
+  display:inline-block;margin-bottom:36px;
+}
+.back:hover{color:var(--accent)}
+
+.hero-grid{
+  display:grid;grid-template-columns:200px 1fr;gap:60px;align-items:start;
+}
+.hero-aside{min-width:0}
+.meta-row{
+  display:flex;flex-direction:column;gap:3px;
+  font-family:'Newsreader',serif;font-style:normal;font-weight:400;
+  font-size:15px;color:var(--muted);margin:0 0 28px;
+}
+.meta-row span:first-child{
+  color:var(--accent);font-style:normal;
+  font-family:'Work Sans',sans-serif;font-size:12px;letter-spacing:.14em;
+  text-transform:uppercase;margin-bottom:6px;
+}
+
+.facts{
+  display:flex;flex-direction:column;gap:0;margin:0;
+  border-top:1px solid var(--ink);
+}
+.facts > div{padding:18px 0;border-bottom:1px solid var(--rule)}
+.facts dt{
+  font-family:'Newsreader',serif;font-style:normal;font-weight:400;
+  font-size:14px;color:var(--muted);margin-bottom:6px;
+}
+.facts dd{margin:0;font-family:'Newsreader',serif;font-size:17px;line-height:1.35;color:var(--ink)}
+
+.hero-main{min-width:0}
+.kicker{
+  font-family:'Newsreader',serif;font-style:normal;font-weight:400;
+  font-size:17px;color:var(--accent);margin:0 0 18px;
+}
+.hero h1{
+  font-family:'Newsreader',serif;font-weight:600;
+  font-size:clamp(44px,6.2vw,88px);line-height:1;letter-spacing:-.025em;
+  margin:0 0 32px;max-width:17ch;color:var(--ink);
+}
+.hero h1 em{font-style:normal;font-weight:600;color:var(--accent)}
+
+.lede{
+  font-family:'Newsreader',serif;font-weight:600;font-style:normal;
+  font-size:clamp(20px,2.2vw,26px);line-height:1.45;color:#000;
+  max-width:58ch;margin:0;
+}
+
+/* ---------- figure ---------- */
+.figure{max-width:1180px;margin:60px auto;padding:0 40px}
+.figure .frame{
+  background:#F1EAD8;border:1px solid var(--rule);
+  padding:48px 32px;
+}
+.figure .frame--video{padding:0;background:#000;border:0}
+.video-wrap{position:relative;width:100%;aspect-ratio:16/9;background:#000}
+.video-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
+.video-poster{
+  position:absolute;inset:0;width:100%;height:100%;
+  background-size:cover;background-position:center;
+  border:0;padding:0;margin:0;cursor:pointer;
+  display:flex;align-items:flex-end;justify-content:flex-start;
+  overflow:hidden;
+}
+.video-poster::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,.55) 100%);
+  transition:opacity .25s ease;
+}
+.video-poster:hover::after{opacity:.75}
+.video-poster .play{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:78px;height:78px;border-radius:50%;
+  background:rgba(255,255,255,.95);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 10px 30px rgba(0,0,0,.35);
+  transition:transform .25s ease, background .25s ease;
+}
+.video-poster:hover .play{transform:translate(-50%,-50%) scale(1.06);background:var(--accent)}
+.video-poster:hover .play svg path{fill:#fff}
+.video-poster .play svg{width:28px;height:28px;display:block;margin-left:4px}
+.video-poster .play svg path{fill:var(--ink);transition:fill .25s ease}
+.video-poster .cta{
+  position:relative;z-index:1;margin:24px 28px;
+  font-family:'Newsreader',serif;font-style:normal;font-weight:400;
+  font-size:16px;color:#FFFFFF;letter-spacing:.01em;
+  text-shadow:0 1px 8px rgba(0,0,0,.4);
+}
+.figcap{
+  margin-top:14px;
+  font-family:'Newsreader',serif;font-style:normal;font-weight:400;
+  font-size:15px;color:var(--muted);
+}
+.figcap .n{color:var(--accent);font-style:normal;margin-right:10px}
+
+/* ---------- section ---------- */
+.sec{max-width:1180px;margin:0 auto;padding:47px 40px}
+.sec-rule{
+  max-width:1180px;margin:0 auto;padding:0 40px;border:0;
+  height:1px;background:transparent;position:relative;
+}
+.sec-rule::before{
+  content:"";position:absolute;left:40px;right:40px;top:0;
+  height:1px;background:#E3DCCA;
+}
+.sec-grid{display:grid;grid-template-columns:200px 1fr;gap:60px;align-items:start}
+.sec-label{
+  position:sticky;top:24px;
+  font-family:'Newsreader',serif;font-weight:400;font-size:22px;line-height:1.2;color:var(--ink);
+}
+.sec-label .n{
+  display:block;font-family:'Newsreader',serif;font-style:normal;font-weight:600;
+  font-size:52px;letter-spacing:-.02em;color:var(--accent);line-height:1;margin-bottom:10px;
+}
+.sec-body{max-width:68ch}
+.sec-body p{margin:0 0 22px}
+.sec-body p strong{font-weight:400;color:var(--ink)}
+.sec-body p em{color:var(--ink);font-style:normal;font-weight:600}
+.role-list{list-style:none;margin:0;padding:0}
+.role-list li{position:relative;padding:0 0 18px 26px;margin:0 0 18px;border-bottom:1px solid var(--rule)}
+.role-list li:last-child{border-bottom:0;margin-bottom:0;padding-bottom:0}
+.role-list li::before{content:"";position:absolute;left:0;top:.72em;width:12px;height:1px;background:var(--accent)}
+
+/* ---------- pull quote ---------- */
+.pull{max-width:900px;margin:13px auto;padding:40px 40px;text-align:center}
+.pull blockquote{
+  margin:0;font-family:'Newsreader',serif;font-weight:600;font-style:normal;
+  font-size:clamp(26px,3.2vw,40px);line-height:1.3;letter-spacing:-.01em;color:var(--ink);
+}
+.pull blockquote::before,
+.pull blockquote::after{color:var(--accent);font-size:1.3em;line-height:0}
+.pull blockquote::before{content:"“";margin-right:4px;vertical-align:-.25em}
+.pull blockquote::after{content:"”";margin-left:2px;vertical-align:-.25em}
+.pull cite{
+  display:block;margin-top:24px;font-style:normal;font-weight:400;
+  font-family:'Newsreader',serif;font-size:15px;color:var(--muted);
+}
+
+/* ---------- results ---------- */
+.results{max-width:1180px;margin:0 auto;padding:60px 40px 80px}
+.results-head{
+  display:flex;justify-content:space-between;align-items:baseline;gap:20px;flex-wrap:wrap;
+  border-top:1px solid #E3DCCA;padding:16px 0;margin-bottom:40px;
+}
+.results-head h2{
+  margin:0;font-family:'Newsreader',serif;font-weight:600;
+  font-size:clamp(32px,4vw,52px);letter-spacing:-.02em;
+}
+.results-head h2 em{font-style:normal;color:var(--accent);font-weight:600}
+.results-head .note{
+  font-family:'Newsreader',serif;font-style:normal;font-size:15px;color:var(--muted);
+}
+
+.rgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--rule)}
+.stat{padding:36px 30px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.stat:first-child{padding-left:0}
+.stat:last-child{border-right:0;padding-right:0}
+.stat .tag{
+  display:block;margin-bottom:14px;
+  font-family:'Newsreader',serif;font-style:normal;font-weight:400;
+  font-size:15px;color:var(--muted);
+}
+.stat .big{
+  font-family:'Newsreader',serif;font-weight:600;
+  font-size:clamp(46px,5.6vw,76px);line-height:1;letter-spacing:-.025em;color:var(--ink);
+  display:block;margin-bottom:12px;
+}
+.stat .big em{font-style:normal;color:var(--ink);font-weight:600}
+.stat .big em.to{
+  font-family:'Newsreader',serif;font-style:normal;font-weight:600;
+  font-size:.6em;color:var(--ink);margin:0 .04em;vertical-align:.18em;
+}
+.stat p{margin:0;font-size:15px;line-height:1.5;color:var(--ink-2)}
+
+/* ---------- foot ---------- */
+.foot{border-top:1px solid var(--rule);padding:24px 0}
+.foot-inner{
+  max-width:1180px;margin:0 auto;padding:0 40px;
+  display:flex;justify-content:space-between;align-items:center;gap:20px;
+  font-family:'Newsreader',serif;font-style:normal;font-size:15px;color:var(--muted);
+}
+.foot a{color:var(--ink);font-style:normal}
+.foot a:hover{color:var(--accent)}
+
+/* ---------- SVG illustrations ---------- */
+.ill{width:100%;height:auto;display:block}
+.ill text{font-family:'Newsreader',serif}
+.ill .label{font-family:'Newsreader',serif;font-style:normal;font-weight:400;font-size:13px;fill:var(--muted)}
+.ill .num{font-family:'Newsreader',serif;font-weight:600;letter-spacing:-.02em;fill:var(--ink)}
+.ill .accent{fill:var(--accent)}
+
+.jump-results{display:inline-flex;align-items:center;gap:10px;margin-top:28px;font-family:'Work Sans',sans-serif;font-weight:600;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);transition:color .2s ease}
+.jump-results:hover{color:var(--ink)}
+.jump-results .arr{display:inline-block;font-family:'Newsreader',serif;font-style:normal;font-weight:600;font-size:18px;letter-spacing:0;text-transform:none;transform:translateY(1px);transition:transform .2s ease}
+.jump-results:hover .arr{transform:translateY(4px)}
+
+@media (max-width:820px){
+  .sec-grid{grid-template-columns:1fr;gap:24px}
+  .sec-label{position:static}
+  .hero-grid{grid-template-columns:1fr;gap:32px}
+  .rgrid{grid-template-columns:1fr 1fr}
+  .stat{padding:36px 30px}
+  .stat:nth-child(odd){padding-left:0;padding-right:30px;border-right:1px solid var(--rule)}
+  .stat:nth-child(even){padding-left:30px;padding-right:0;border-right:0}
+  .hero h1{font-size:clamp(44px,9vw,72px)}
+  .figure .frame{padding:28px 18px}
+}
+
+em,i{font-style:normal}
+
+.hero-main .kicker{color:#404040}
+
+/* ---------- tldr ---------- */
+.tldr-wrap{max-width:1180px;margin:0 auto;padding:20px 40px 0}
+.tldr{
+  border:1px solid #DDDDB5;background:#F2F2E3;
+  padding:28px 32px;
+  display:grid;grid-template-columns:200px minmax(0,calc(68ch - 32px)) 1fr;gap:28px;align-items:baseline;
+}
+.tldr-label{
+  font-family:'Work Sans',sans-serif;font-weight:600;font-size:12px;
+  letter-spacing:.16em;text-transform:uppercase;color:#76762C;
+}
+.tldr p{margin:0;font-family:'Newsreader',serif;font-weight:600;font-size:20px;line-height:1.5;color:var(--ink)}
+@media (max-width:820px){
+  .tldr{grid-template-columns:1fr;gap:12px;padding:22px 20px}
+  .tldr-wrap{padding:16px 20px 0}
+}
+
+/* ---------- results box ---------- */
+.results{
+  width:calc(100% - 80px);max-width:1100px;margin:60px auto;
+  padding:40px 32px 44px;
+  background:#F2F2E3;border:1px solid #DDDDB5;
+}
+.results-head{border-top:0;padding-top:0}
+.results .stat{border-bottom:0;padding-bottom:8px}
+@media (max-width:820px){
+  .results{width:calc(100% - 40px);padding:28px 20px 32px}
+}
+
+/* ---------- problem figure ---------- */
+.problem{font-family:'Newsreader',serif;color:var(--ink)}
+.problem-head{
+  margin:0 0 36px;max-width:42ch;
+  font-weight:600;font-size:clamp(22px,2.4vw,30px);line-height:1.25;letter-spacing:-.01em;
+}
+.problem-head span{color:var(--accent)}
+.problem-cols{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(5,auto);border-top:1px solid var(--ink)}
+.problem-col{padding:26px 28px 30px;border-right:1px solid var(--rule);display:grid;grid-row:span 5;grid-template-rows:subgrid;row-gap:0}
+.problem-col:first-child{padding-left:0}
+.problem-col:last-child{border-right:0;padding-right:0}
+.problem-col .num{font-weight:600;font-size:44px;line-height:1;letter-spacing:-.02em;color:var(--accent);margin-bottom:14px}
+.problem-col h4{margin:0 0 8px;font-weight:600;font-size:20px;line-height:1.3}
+.problem-col .desc{margin:0 0 26px;font-size:16px;line-height:1.5;color:var(--ink-2)}
+.problem-col .desc strong{font-weight:600;color:var(--ink)}
+.problem-col blockquote{
+  margin:0;padding-top:20px;border-top:1px solid var(--rule);
+  font-size:18px;line-height:1.45;font-weight:400;
+}
+.problem-col blockquote::before{content:"“";color:var(--accent);font-weight:600;margin-right:2px}
+.problem-col blockquote::after{content:"”";color:var(--accent);font-weight:600;margin-left:1px}
+.problem-col cite{
+  display:block;margin-top:12px;font-style:normal;
+  font-family:'Work Sans',sans-serif;font-weight:600;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+}
+.problem-result{
+  margin-top:32px;padding:26px 30px;background:var(--ink);color:#fff;
+  display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:center;
+}
+.problem-result .arrow{
+  font-family:'Work Sans',sans-serif;font-weight:600;font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--accent);white-space:nowrap;
+}
+.problem-result p{margin:0;font-weight:600;font-size:clamp(20px,2.2vw,26px);line-height:1.3}
+.problem-result p span{color:var(--accent)}
+@media (max-width:820px){
+  .problem-cols{grid-template-columns:1fr;grid-template-rows:none}
+  .problem-col{grid-row:auto;grid-template-rows:none}
+  .problem-col{padding:24px 0;border-right:0;border-bottom:1px solid var(--rule)}
+  .problem-col:last-child{border-bottom:0}
+  .problem-result{grid-template-columns:1fr;gap:10px;padding:22px 20px}
+}
+
+.figure .frame--tint{background:#F2F2E3;border-color:#DDDDB5}
+.frame--tint .problem-col,.frame--tint .problem-col blockquote{border-color:#DDDDB5}
+
+.figure--text .frame,.figure--text .figcap{margin-left:260px;max-width:68ch}
+@media (max-width:820px){.figure--text .frame,.figure--text .figcap{margin-left:0;max-width:none}}
+
+/* ---------- tldr: solid ---------- */
+.tldr{background:var(--accent);border-color:var(--accent);color:#fff}
+.tldr-label{color:#fff;display:flex;flex-direction:column;gap:14px;align-self:start;font-size:22px;letter-spacing:.12em}
+.tldr-label svg{width:34px;height:34px;display:block}
+.tldr p{font-family:'Work Sans',sans-serif;font-weight:600;font-size:17px;line-height:1.55;color:#fff}
+@media (max-width:820px){.tldr-label{flex-direction:row;align-items:center}.tldr-label svg{width:26px;height:26px}}
+
+/* ---------- neutral grey rules ---------- */
+.figure .frame{border-color:#D9D9D9}
+.sec-rule::before{background:#D9D9D9}
+/* results: scale big figures to their column so they never overflow */
+.results .rgrid{container-type:inline-size}
+.results .stat .big{font-size:min(68px,calc((25cqi - 60px) * .27));white-space:nowrap}
+.results .stat .big.long{font-size:min(62px,calc((25cqi - 60px) * .21))}
+@media (max-width:820px){.results .stat .big{font-size:min(68px,calc((50cqi - 30px) * .27))}.results .stat .big.long{font-size:min(62px,calc((50cqi - 30px) * .21))}}
+/* consistent spacing: text -> figure matches figure -> figure */
+.sec-body > :last-child{margin-bottom:0}
+.sec:has(+ .figure){padding-bottom:0}
+.stat .big .cur{font-size:.55em;vertical-align:.5em;margin:0 .03em 0 .02em}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="logo" href="index.html">
+      <img src="../assets/brand/logo.png" alt="Andrea Noble Design">
+    </a>
+    <nav class="nav-links">
+      <a href="index.html#work">Work</a>
+      <a href="index.html#about">About</a>
+      <a href="../assets/AndreaNoble_Resume.pdf" target="_blank" rel="noopener">Resume</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <a class="back" href="index.html">← All work</a>
+  <div class="hero-grid">
+    <aside class="hero-aside">
+      <dl class="facts">
+        <div><dt>Project Name</dt><dd>Nota for M&amp;T Bank</dd></div>
+        <div><dt>Role</dt><dd>Strategic Designer</dd></div>
+        <div><dt>Phase</dt><dd>Incubation Sprint</dd></div>
+        <div><dt>Timeframe</dt><dd>2019</dd></div>
+      </dl>
+    </aside>
+    <div class="hero-main">
+      <h1>A digital bank for lawyers, built around <em>compliance.</em></h1>
+      <p class="lede">
+        Mismanaging a client trust account is the #1 reason lawyers are disciplined or
+        disbarred. Nota solves that anxiety with a product — and a new line of business
+        for M&amp;T Bank.
+      </p>
+      <a class="jump-results" href="#results">Jump to results <span class="arr">↓</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- Figure 01 — Nota in context -->
+<figure class="figure">
+  <div class="frame" style="padding:0;background:#000;border:0">
+    <img src="../assets/images/nota-imac.webp" alt="Nota platform shown on an iMac in a workspace — outstanding checks and matter-level activity in view." style="width:100%;height:auto;display:block">
+  </div>
+  <figcaption class="figcap"><span class="n">01</span>Nota is a reconciliation tool that enables lawyers to manage their trust accounts directly within their online banking experience. Photo credit: <a href="https://www.iphonejd.com/iphone_jd/2021/02/nota.html" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:2px">Jeff Richardson</a>.</figcaption>
+</figure>
+
+<div class="tldr-wrap">
+  <aside class="tldr" aria-label="TLDR">
+    <div class="tldr-label">TLDR:<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"/></svg></div>
+    <p>For this project, I supported the test and learn process until we were assured of product-market fit and a solution that would fill a unique void for lawyers. I changed the narrative that a lawyer’s total account balance is the most important data point in a bank account; in fact, it is clients’ individual retainer balances that are most important to surface, in order to avoid mismanaging funds.</p>
+  </aside>
+</div>
+
+<section class="sec">
+  <div class="sec-grid">
+    <div class="sec-label"><span class="n">01</span>The objective</div>
+    <div class="sec-body">
+      <p>
+        M&amp;T Bank was looking to create a differentiated business-banking product by
+        starting with a high-value segment, but they weren’t sure where to start.
+      </p>
+      <p>
+        After speaking with hundreds of small businesses, we identified <strong>lawyers</strong> as a
+        fast-growing segment with a real pain point to be solved: <em>trust account management.</em>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Figure 02 — The problem -->
+<figure class="figure">
+  <div class="frame" style="padding:0;background:#fff">
+    <img src="../assets/images/nota_problem-slide-v2.png" alt="The problem: client funds are often mingled in lawyers' trust accounts, leading to three common compliance errors — losing track of client balances, borrowing funds from trust accounts, and overdrafting at the client level — illustrated with quotes from Len and Jay, solo lawyers, and Kim, a firm CFO. The result: mismanaging money in client accounts is the #1 reason lawyers are disciplined or disbarred." style="width:100%;height:auto;display:block">
+  </div>
+  <figcaption class="figcap"><span class="n">02</span>The problem — three common trust-account errors, in the words of the lawyers and finance leads we interviewed.</figcaption>
+</figure>
+
+<hr class="sec-rule">
+
+<section class="sec">
+  <div class="sec-grid">
+    <div class="sec-label"><span class="n">02</span>What we did</div>
+    <div class="sec-body">
+      <p>
+        The thesis was specific: if we can create a layer on top of a bank account to organize
+        retainer accounts and automate reconciliation, we’ll reduce stress and eliminate the
+        mismanagement of trust accounts for lawyers.
+      </p>
+      <p>
+        To test this thesis, we ran <strong>33 in-depth interviews</strong> with solo and small-firm
+        lawyers, office managers, and bookkeepers, plus 25+ M&amp;T relationship managers. A
+        national survey of <strong>140+ lawyers</strong>, and consultations with five legal experts
+        plus 3 IOLTA specialists helped us co-create our feature set.
+      </p>
+      <p>
+        After building and refining our POC and MVP, we launched an alpha that quickly gained
+        traction — ultimately resulting in a full build and handover to a brand new M&amp;T team.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Figure 03 — Research footprint -->
+<figure class="figure">
+  <div class="frame" style="padding:0;background:#fff">
+    <img src="../assets/images/nota_research-slide-v2.png" alt="Research footprint: 33 in-depth interviews with solo and small-firm lawyers, office managers, and bookkeepers across NY, NJ, and MD; 140+ national survey respondents; 8 outside experts; plus 25+ M&T relationship managers." style="width:100%;height:auto;display:block">
+  </div>
+  <figcaption class="figcap"><span class="n">03</span>Research footprint — 33 interviews across NY, NJ, MD, plus 140+ survey respondents and outside experts.</figcaption>
+</figure>
+
+<hr class="sec-rule">
+
+<section class="sec">
+  <div class="sec-grid">
+    <div class="sec-label"><span class="n">03</span>My role</div>
+    <div class="sec-body">
+      <ul class="role-list">
+        <li>Developed research plan to test our functional POC and detailed screens with lawyers; worked with our recruiter to identify the right participants, drafted discussion guides, and co-facilitated interviews</li>
+        <li>Synthesized findings and made recommendations based on user research to shape and evolve the product throughout alpha and MVP stages, working closely with our designers and engineers</li>
+        <li>Created a service blueprint for Beta execution outlining the back-stage actions required for an ideal user flow</li>
+        <li>Trained embedded clients on design thinking and how to run strategic design sprints</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Figure 04 — Service blueprint -->
+<figure class="figure">
+  <div class="frame" style="padding:0;background:#fff">
+    <a href="../assets/images/Nota_Service%20blueprint.pdf" target="_blank" rel="noopener" aria-label="Open the full-size Nota Beta service blueprint (PDF)">
+      <img src="../assets/images/nota_service-blueprint.jpg" alt="Nota Beta service blueprint mapping customer acquisition, concierge account opening, and product use across user flow, touchpoints, on-stage and off-stage actions, and support systems." style="width:100%;height:auto;display:block">
+    </a>
+  </div>
+  <figcaption class="figcap"><span class="n">04</span>The service blueprint that I created enabled a small team to operate our Beta product, and validate our product at scale.</figcaption>
+</figure>
+
+
+<hr class="sec-rule">
+
+<section class="sec">
+  <div class="sec-grid">
+    <div class="sec-label"><span class="n">04</span>The solution</div>
+    <div class="sec-body">
+      <p>
+        Nota is a digital bank for lawyers that <em>makes compliance easy</em>. Attorneys link
+        their existing bank accounts and get <strong>smart alerts</strong> as money moves in and out of
+        their IOLTA — flagging the moments where a misstep would normally trigger a bar
+        complaint.
+      </p>
+      <p>
+        Every transaction can be <strong>tagged to a client matter</strong>, manually or with suggested
+        tags, so the trust ledger and the bank ledger stay in lock-step. Attorneys can see
+        pending outgoing checks at a glance, and Nota <strong>automatically produces the
+        reconciliation reports</strong> bar associations require — collapsing what used to be a
+        month-end ritual across three systems into a single, audit-ready view.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Figure 05 — Client matters -->
+<figure class="figure figure--text">
+  <div class="frame" style="padding:0;background:#fff">
+    <img src="../assets/images/Client-Matters-cropped.png" alt="Nota Client Matters view — a grid of client matter cards, each showing that client's adjusted balance in the IOLTA account and any outstanding checks." style="width:100%;height:auto;display:block">
+  </div>
+  <figcaption class="figcap"><span class="n">05</span>The ‘Client Matters’ view surfaces each client's retainer balance — including outstanding checks.</figcaption>
+</figure>
+
+<section class="pull">
+  <blockquote>
+    It can do everything I have been able to do in other software, but I've
+    never been able to do it directly within my banking. This alleviates a lot
+    of duplicative work and mental stress.
+  </blockquote>
+  <cite>Keith, Attorney reviewing our POC · Buffalo, NY</cite>
+</section>
+
+<section class="results" id="results">
+  <div class="results-head">
+    <h2><em>Results</em></h2>
+    <span class="note">Five years post-launch</span>
+  </div>
+  <div class="rgrid">
+    <div class="stat">
+      <span class="tag">Deposits</span>
+      <span class="big"><span class="cur">$</span>350<em>m+</em></span>
+      <p>In deposits across 2,000+ law firms within five years of launch.</p>
+    </div>
+    <div class="stat">
+      <span class="tag">Acquisition</span>
+      <span class="big">100<em>%</em></span>
+      <p>Of user-acquisition targets hit — 50 lawyer customers in the first 6 months post-Beta.</p>
+    </div>
+    <div class="stat">
+      <span class="tag">Onboarding</span>
+      <span class="big">5.7<em>x</em></span>
+      <p>Faster onboarding — cut from 17 days to 3.</p>
+    </div>
+    <div class="stat">
+      <span class="tag">Precedent</span>
+      <span class="big"><em>1</em>st</span>
+      <p>Cloud-native application for M&amp;T Bank.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Figure 06 — Platform (video) -->
+<figure class="figure">
+  <div class="frame frame--video">
+    <div class="video-wrap">
+      <a class="video-poster" role="button"
+         href="https://www.youtube.com/watch?v=gCFtGYVpblc"
+         target="_blank" rel="noopener noreferrer"
+         style="background-image:url('../assets/images/nota_video_poster.jpg')"
+         aria-label="Watch demo video on YouTube">
+        <span class="play" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        </span>
+        <span class="cta">Watch demo video on YouTube &nbsp;↗</span>
+      </a>
+    </div>
+  </div>
+  <figcaption class="figcap"><span class="n">06</span>The Nota platform — smart alerts, transaction tagging by client matter, and one-click reconciliation. Demo courtesy of The Florida Bar Association.</figcaption>
+</figure>
+
+
+</main>
+
+<footer class="foot">
+  <div class="foot-inner">
+    <span>← <a href="index.html">All work</a></span>
+    <span>© 2026 Andrea Noble · New Jersey and New York</span>
+    <span>Next — <a href="miter.html">BuildMate for [Redacted National Building Materials Distributor]</a> →</span>
+  </div>
+</footer>
+
+</body>
+</html>

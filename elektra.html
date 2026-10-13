@@ -1,0 +1,550 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ford Future Visioning · Andrea Noble</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600;1,6..72,700&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFFFFF;
+  --ink:#1C231F;
+  --ink-2:#3A4A3F;
+  --muted:#7C8579;
+  --rule:#DCD3BE;
+  --accent:#AAAA46;
+  --accent-soft:#AAAA46;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+html,body{margin:0;padding:0}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:'Newsreader',Georgia,serif;
+  font-size:18px;line-height:1.6;
+  font-feature-settings:"liga","kern";
+}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--accent);color:#fff}
+
+/* ---------- nav ---------- */
+.nav{border-bottom:1px solid var(--rule);background:var(--bg)}
+.nav-inner{
+  max-width:1180px;margin:0 auto;padding:22px 40px;
+  display:flex;align-items:center;justify-content:space-between;gap:24px;
+}
+.logo img{height:26px;width:auto;display:block}
+.nav-links{display:flex;gap:28px}
+.nav-links a{
+  font-family:'Work Sans',sans-serif;font-weight:600;
+  font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink-2);
+}
+.nav-links a:hover{color:var(--accent)}
+
+/* ---------- hero ---------- */
+.hero{max-width:1180px;margin:0 auto;padding:47px 40px 27px}
+.back{
+  font-family:'Work Sans',sans-serif;font-weight:600;
+  font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--muted);
+  display:inline-block;margin-bottom:36px;
+}
+.back:hover{color:var(--accent)}
+
+.hero-grid{
+  display:grid;grid-template-columns:200px 1fr;gap:60px;align-items:start;
+}
+.hero-aside{min-width:0}
+.meta-row{
+  display:flex;flex-direction:column;gap:3px;
+  font-family:'Newsreader',serif;font-style:normal;font-weight:400;
+  font-size:15px;color:var(--muted);margin:0 0 28px;
+}
+.meta-row span:first-child{
+  color:var(--accent);font-style:normal;
+  font-family:'Work Sans',sans-serif;font-size:12px;letter-spacing:.14em;
+  text-transform:uppercase;margin-bottom:6px;
+}
+
+.facts{
+  display:flex;flex-direction:column;gap:0;margin:0;
+  border-top:1px solid var(--ink);
+}
+.facts > div{padding:18px 0;border-bottom:1px solid var(--rule)}
+.facts dt{
+  font-family:'Newsreader',serif;font-style:normal;font-weight:400;
+  font-size:14px;color:var(--muted);margin-bottom:6px;
+}
+.facts dd{margin:0;font-family:'Newsreader',serif;font-size:17px;line-height:1.35;color:var(--ink)}
+
+.hero-main{min-width:0}
+.kicker{
+  font-family:'Newsreader',serif;font-style:normal;font-weight:400;
+  font-size:17px;color:var(--accent);margin:0 0 18px;
+}
+.hero h1{
+  font-family:'Newsreader',serif;font-weight:600;
+  font-size:clamp(44px,6.2vw,88px);line-height:1;letter-spacing:-.025em;
+  margin:0 0 32px;max-width:17ch;color:var(--ink);
+}
+.hero h1 em{font-style:normal;font-weight:600;color:var(--accent)}
+
+.lede{
+  font-family:'Newsreader',serif;font-weight:600;font-style:normal;
+  font-size:clamp(20px,2.2vw,26px);line-height:1.45;color:#000;
+  max-width:58ch;margin:0;
+}
+
+/* ---------- figure ---------- */
+.figure{max-width:1180px;margin:60px auto;padding:0 40px}
+.figure .frame{
+  background:#F1EAD8;border:1px solid var(--rule);
+  padding:48px 32px;
+}
+.figure .frame--video{padding:0;background:#000;border:0}
+.video-wrap{position:relative;width:100%;aspect-ratio:16/9;background:#000}
+.video-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
+.video-poster{
+  position:absolute;inset:0;width:100%;height:100%;
+  background-size:cover;background-position:center;
+  border:0;padding:0;margin:0;cursor:pointer;
+  display:flex;align-items:flex-end;justify-content:flex-start;
+  overflow:hidden;
+}
+.video-poster::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,.55) 100%);
+  transition:opacity .25s ease;
+}
+.video-poster:hover::after{opacity:.75}
+.video-poster .play{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:78px;height:78px;border-radius:50%;
+  background:rgba(255,255,255,.95);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 10px 30px rgba(0,0,0,.35);
+  transition:transform .25s ease, background .25s ease;
+}
+.video-poster:hover .play{transform:translate(-50%,-50%) scale(1.06);background:var(--accent)}
+.video-poster:hover .play svg path{fill:#fff}
+.video-poster .play svg{width:28px;height:28px;display:block;margin-left:4px}
+.video-poster .play svg path{fill:var(--ink);transition:fill .25s ease}
+.video-poster .cta{
+  position:relative;z-index:1;margin:24px 28px;
+  font-family:'Newsreader',serif;font-style:normal;font-weight:400;
+  font-size:16px;color:#FFFFFF;letter-spacing:.01em;
+  text-shadow:0 1px 8px rgba(0,0,0,.4);
+}
+.figcap{
+  margin-top:14px;
+  font-family:'Newsreader',serif;font-style:normal;font-weight:400;
+  font-size:15px;color:var(--muted);
+}
+.figcap .n{color:var(--accent);font-style:normal;margin-right:10px}
+
+/* ---------- section ---------- */
+.sec{max-width:1180px;margin:0 auto;padding:47px 40px}
+.sec-rule{
+  max-width:1180px;margin:0 auto;padding:0 40px;border:0;
+  height:1px;background:transparent;position:relative;
+}
+.sec-rule::before{
+  content:"";position:absolute;left:40px;right:40px;top:0;
+  height:1px;background:#E3DCCA;
+}
+.sec-grid{display:grid;grid-template-columns:200px 1fr;gap:60px;align-items:start}
+.sec-label{
+  position:sticky;top:24px;
+  font-family:'Newsreader',serif;font-weight:400;font-size:22px;line-height:1.2;color:var(--ink);
+}
+.sec-label .n{
+  display:block;font-family:'Newsreader',serif;font-style:normal;font-weight:600;
+  font-size:52px;letter-spacing:-.02em;color:var(--accent);line-height:1;margin-bottom:10px;
+}
+.sec-body{max-width:68ch}
+.sec-body p{margin:0 0 22px}
+.sec-body p strong{font-weight:400;color:var(--ink)}
+.sec-body p em{color:var(--ink);font-style:normal;font-weight:600}
+
+/* ---------- pull quote ---------- */
+.pull{max-width:900px;margin:13px auto;padding:40px 40px;text-align:center}
+.pull blockquote{
+  margin:0;font-family:'Newsreader',serif;font-weight:600;font-style:normal;
+  font-size:clamp(26px,3.2vw,40px);line-height:1.3;letter-spacing:-.01em;color:var(--ink);
+}
+.pull blockquote::before,
+.pull blockquote::after{color:var(--accent);font-size:1.3em;line-height:0}
+.pull blockquote::before{content:"“";margin-right:4px;vertical-align:-.25em}
+.pull blockquote::after{content:"”";margin-left:2px;vertical-align:-.25em}
+.pull cite{
+  display:block;margin-top:24px;font-style:normal;font-weight:400;
+  font-family:'Newsreader',serif;font-size:15px;color:var(--muted);
+}
+
+/* ---------- results ---------- */
+.results{max-width:1180px;margin:0 auto;padding:60px 40px 80px}
+.results-head{
+  display:flex;justify-content:space-between;align-items:baseline;gap:20px;flex-wrap:wrap;
+  border-top:1px solid #E3DCCA;padding:16px 0;margin-bottom:40px;
+}
+.results-head h2{
+  margin:0;font-family:'Newsreader',serif;font-weight:600;
+  font-size:clamp(32px,4vw,52px);letter-spacing:-.02em;
+}
+.results-head h2 em{font-style:normal;color:var(--accent);font-weight:600}
+.results-head .note{
+  font-family:'Newsreader',serif;font-style:normal;font-size:15px;color:var(--muted);
+}
+
+.rgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--rule)}
+.stat{padding:36px 30px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.stat:first-child{padding-left:0}
+.stat:last-child{border-right:0;padding-right:0}
+.stat .tag{
+  display:block;margin-bottom:14px;
+  font-family:'Newsreader',serif;font-style:normal;font-weight:400;
+  font-size:15px;color:var(--muted);
+}
+.stat .big{
+  font-family:'Newsreader',serif;font-weight:600;
+  font-size:clamp(46px,5.6vw,76px);line-height:1;letter-spacing:-.025em;color:var(--ink);
+  display:block;margin-bottom:12px;
+}
+.stat .big em{font-style:normal;color:var(--ink);font-weight:600}
+.stat .big em.to{
+  font-family:'Newsreader',serif;font-style:normal;font-weight:600;
+  font-size:.6em;color:var(--ink);margin:0 .04em;vertical-align:.18em;
+}
+.stat p{margin:0;font-size:15px;line-height:1.5;color:var(--ink-2)}
+
+/* ---------- foot ---------- */
+.foot{border-top:1px solid var(--rule);padding:24px 0}
+.foot-inner{
+  max-width:1180px;margin:0 auto;padding:0 40px;
+  display:flex;justify-content:space-between;align-items:center;gap:20px;
+  font-family:'Newsreader',serif;font-style:normal;font-size:15px;color:var(--muted);
+}
+.foot a{color:var(--ink);font-style:normal}
+.foot a:hover{color:var(--accent)}
+
+/* ---------- SVG illustrations ---------- */
+.ill{width:100%;height:auto;display:block}
+.ill text{font-family:'Newsreader',serif}
+.ill .label{font-family:'Newsreader',serif;font-style:normal;font-weight:400;font-size:13px;fill:var(--muted)}
+.ill .num{font-family:'Newsreader',serif;font-weight:600;letter-spacing:-.02em;fill:var(--ink)}
+.ill .accent{fill:var(--accent)}
+
+.jump-results{display:inline-flex;align-items:center;gap:10px;margin-top:28px;font-family:'Work Sans',sans-serif;font-weight:600;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);transition:color .2s ease}
+.jump-results:hover{color:var(--ink)}
+.jump-results .arr{display:inline-block;font-family:'Newsreader',serif;font-style:normal;font-weight:600;font-size:18px;letter-spacing:0;text-transform:none;transform:translateY(1px);transition:transform .2s ease}
+.jump-results:hover .arr{transform:translateY(4px)}
+
+@media (max-width:820px){
+  .sec-grid{grid-template-columns:1fr;gap:24px}
+  .sec-label{position:static}
+  .hero-grid{grid-template-columns:1fr;gap:32px}
+  .rgrid{grid-template-columns:1fr 1fr}
+  .stat{padding:36px 30px}
+  .stat:nth-child(odd){padding-left:0;padding-right:30px;border-right:1px solid var(--rule)}
+  .stat:nth-child(even){padding-left:30px;padding-right:0;border-right:0}
+  .hero h1{font-size:clamp(44px,9vw,72px)}
+  .figure .frame{padding:28px 18px}
+}
+
+em,i{font-style:normal}
+
+.hero-main .kicker{color:#404040}
+
+/* ---------- tldr ---------- */
+.tldr-wrap{max-width:1180px;margin:0 auto;padding:20px 40px 0}
+.tldr{
+  border:1px solid #DDDDB5;background:#F2F2E3;
+  padding:28px 32px;
+  display:grid;grid-template-columns:200px minmax(0,calc(68ch - 32px)) 1fr;gap:28px;align-items:baseline;
+}
+.tldr-label{
+  font-family:'Work Sans',sans-serif;font-weight:600;font-size:12px;
+  letter-spacing:.16em;text-transform:uppercase;color:#76762C;
+}
+.tldr p{margin:0;font-family:'Newsreader',serif;font-weight:600;font-size:20px;line-height:1.5;color:var(--ink)}
+@media (max-width:820px){
+  .tldr{grid-template-columns:1fr;gap:12px;padding:22px 20px}
+  .tldr-wrap{padding:16px 20px 0}
+}
+
+/* ---------- results box ---------- */
+.results{
+  width:calc(100% - 80px);max-width:1100px;margin:60px auto;
+  padding:40px 32px 44px;
+  background:#F2F2E3;border:1px solid #DDDDB5;
+}
+.results-head{border-top:0;padding-top:0}
+.results .stat{border-bottom:0;padding-bottom:8px}
+@media (max-width:820px){
+  .results{width:calc(100% - 40px);padding:28px 20px 32px}
+}
+
+/* ---------- tldr: solid ---------- */
+.tldr{background:var(--accent);border-color:var(--accent);color:#fff}
+.tldr-label{color:#fff;display:flex;flex-direction:column;gap:14px;align-self:start;font-size:22px;letter-spacing:.12em}
+.tldr-label svg{width:34px;height:34px;display:block}
+.tldr p{font-family:'Work Sans',sans-serif;font-weight:600;font-size:17px;line-height:1.55;color:#fff}
+@media (max-width:820px){.tldr-label{flex-direction:row;align-items:center}.tldr-label svg{width:26px;height:26px}}
+
+/* ---------- neutral grey rules ---------- */
+.figure .frame{border-color:#D9D9D9}
+.sec-rule::before{background:#D9D9D9}
+/* results: scale big figures to their column so they never overflow */
+.results .rgrid{container-type:inline-size}
+.results .stat .big{font-size:min(68px,calc((25cqi - 60px) * .27));white-space:nowrap}
+.results .stat .big.long{font-size:min(62px,calc((25cqi - 60px) * .21))}
+@media (max-width:820px){.results .stat .big{font-size:min(68px,calc((50cqi - 30px) * .27))}.results .stat .big.long{font-size:min(62px,calc((50cqi - 30px) * .21))}}
+/* consistent spacing: text -> figure matches figure -> figure */
+.sec-body > :last-child{margin-bottom:0}
+.sec:has(+ .figure){padding-bottom:0}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="logo" href="index.html">
+      <img src="../assets/brand/logo.png" alt="Andrea Noble Design">
+    </a>
+    <nav class="nav-links">
+      <a href="index.html#work">Work</a>
+      <a href="index.html#about">About</a>
+      <a href="../assets/AndreaNoble_Resume.pdf" target="_blank" rel="noopener">Resume</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <a class="back" href="index.html">← All work</a>
+  <div class="hero-grid">
+    <aside class="hero-aside">
+      <dl class="facts">
+        <div><dt>Project Name</dt><dd>Ford Future Visioning</dd></div>
+        <div><dt>Role</dt><dd>Research &amp; strategic design</dd></div>
+        <div><dt>Phase</dt><dd>Innovation Sprint</dd></div>
+        <div><dt>Timeframe</dt><dd>TBD</dd></div>
+      </dl>
+    </aside>
+    <div class="hero-main">
+      <h1>Redesigning what it means to <em>own a car.</em></h1>
+      <p class="lede">
+        A major automotive OEM brought us in to imagine the 2025 ownership experience —
+        and to translate that vision into a portfolio of investable concepts a venture
+        board could actually act on.
+      </p>
+      <a class="jump-results" href="#results">Jump to results <span class="arr">↓</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- Figure 01 — Insight-to-opportunity framework -->
+<figure class="figure">
+  <div class="frame">
+    <img class="ill" src="../assets/images/elektra_slide-018.jpg" alt="Insight-to-opportunity framework mapping three core research findings to concept solutions">
+  </div>
+  <figcaption class="figcap"><span class="n">01</span>Insight-to-opportunity framework — mapping synthesized research findings to specific concept solutions the board could back.</figcaption>
+</figure>
+
+<div class="tldr-wrap">
+  <aside class="tldr" aria-label="TLDR">
+    <div class="tldr-label">TLDR:<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"/></svg></div>
+    <p>Placeholder summary sentence one describes the client and the challenge they faced. Placeholder sentence two explains the approach and the work we did together. Placeholder sentence three captures the outcome and why it mattered.</p>
+  </aside>
+</div>
+
+<section class="sec">
+  <div class="sec-grid">
+    <div class="sec-label"><span class="n">01</span>The objective</div>
+    <div class="sec-body">
+      <p>
+        The OEM's <strong>customer loyalty and engagement</strong> were under pressure from fragmented
+        touchpoints, opaque service decisions, and disconnected loyalty programs. We were
+        asked to develop an unconstrained, hero ownership experience for 2025 — one that
+        aligned to the brand's promise to <em>power the freedom to move with thrilling,
+        rewarding experiences that connect and energize.</em>
+      </p>
+      <p>
+        The bet: if the ownership journey could be re-cut around moments customers
+        actually value, the OEM could convert a transactional relationship into a
+        recurring one.
+      </p>
+    </div>
+  </div>
+</section>
+
+<hr class="sec-rule">
+
+<section class="sec">
+  <div class="sec-grid">
+    <div class="sec-label"><span class="n">02</span>What we did</div>
+    <div class="sec-body">
+      <p>
+        Rather than starting from a blank page, we <strong>synthesized 250+ existing files</strong>
+        across client research, in-flight projects, and competitor and non-auto exemplars
+        — folding their signal into a single insight map.
+      </p>
+      <p>
+        In parallel we ran <strong>20+ end-user interviews</strong> spanning current, former, and future
+        OEM owners — across BEV and ICE vehicles, subscription-service users, and owners
+        of competitor and upmarket brands. Six external experts from <strong>NIO, Tesla, REI, and
+        Marriott</strong> stress-tested our assumptions on autonomous systems, retail, and loyalty.
+      </p>
+      <p>
+        We <em>mapped industry revenue pools</em> to locate emerging service and ecosystem
+        opportunities, built on existing frameworks (Customer Wheel, FordPass, Enterprise
+        Connectivity, TCLF) to accelerate buy-in, and developed <strong>9 priority concepts</strong>
+        pitched to the venture board — OEM leadership, BCG partners, and the design team.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Figure 02 — Research footprint -->
+<figure class="figure">
+  <div class="frame">
+    <svg class="ill" viewBox="0 0 1040 320" role="img" aria-label="Research footprint: 20+ interviews, 250+ files synthesized, 6 experts">
+      <g transform="translate(60,80)">
+        <text class="num" x="0" y="80" font-size="110">20<tspan font-size="70" dy="-30">+</tspan></text>
+        <text class="label" x="0" y="120" style="font-size:15px">End-user interviews</text>
+        <text class="label" x="0" y="146">Current, former &amp; future OEM owners,</text>
+        <text class="label" x="0" y="168">BEV, ICE &amp; competitor brands.</text>
+      </g>
+
+      <line x1="360" y1="70" x2="360" y2="250" stroke="#DCD3BE" stroke-width="1"/>
+
+      <g transform="translate(400,80)">
+        <text class="num accent" x="0" y="80" font-size="110" font-style="normal">250<tspan font-size="70" dy="-30">+</tspan></text>
+        <text class="label" x="0" y="120" style="font-size:15px">Existing files synthesized</text>
+        <text class="label" x="0" y="146">Client research, in-flight projects,</text>
+        <text class="label" x="0" y="168">auto &amp; non-auto exemplars.</text>
+      </g>
+
+      <line x1="740" y1="70" x2="740" y2="250" stroke="#DCD3BE" stroke-width="1"/>
+
+      <g transform="translate(780,80)">
+        <text class="num" x="0" y="80" font-size="110">6</text>
+        <text class="label" x="0" y="120" style="font-size:15px">Outside experts</text>
+        <text class="label" x="0" y="146">NIO, Tesla, REI, Marriott — on</text>
+        <text class="label" x="0" y="168">autonomy, retail &amp; loyalty.</text>
+      </g>
+    </svg>
+  </div>
+  <figcaption class="figcap"><span class="n">02</span>Research footprint — 20+ interviews, 250+ files synthesized across client research and exemplars, and six outside experts.</figcaption>
+</figure>
+
+<section class="pull">
+  <blockquote>
+    Trust breaks down as customers continue to feel that OEMs are taking
+    advantage of them. Communicate with transparency — from clear pricing to
+    proactive discussion around expectations that are not being met.
+  </blockquote>
+  <cite>Synthesized insight · customer research</cite>
+</section>
+
+<!-- Figure 03 — Concept structures -->
+<figure class="figure">
+  <div class="frame">
+    <img class="ill" src="../assets/images/elektra_slide-020.jpg" alt="Concept structures for the venture board pitch including CareFree, loyalty program, digital twin, experiential retail, and others">
+  </div>
+  <figcaption class="figcap"><span class="n">03</span>Concept structures pitched to the venture board — each scoped with a thesis, business model, and key assumptions.</figcaption>
+</figure>
+
+<!-- Figure 04 — CareFree business case -->
+<figure class="figure">
+  <div class="frame">
+    <img class="ill" src="../assets/images/elektra_slide-029.jpg" alt="CareFree value creation slide showing market opportunity, monetization model, and key assumptions for a predictive maintenance concept">
+  </div>
+  <figcaption class="figcap"><span class="n">04</span>One concept in depth — <em>CareFree</em>, a predictive-maintenance and mobile-service offering, scoped with market sizing and monetization model.</figcaption>
+</figure>
+
+
+<section class="sec">
+  <div class="sec-grid">
+    <div class="sec-label"><span class="n">03</span>The solution</div>
+    <div class="sec-body">
+      <p>
+        We delivered an aspirational <strong>2025 hero ownership journey</strong> told from the
+        customer's perspective — a single, end-to-end experience spanning Guided
+        Discovery, Joyful Purchase, Rocket Set-Up &amp; Onboarding, Progressive Learning &amp;
+        Smart Assistance, Effortless Maintenance &amp; Repair, Rewarded Membership, and
+        Easy Renewal. Each stage was anchored to documented customer pain points and
+        designed to convert friction into <em>moments of brand value.</em>
+      </p>
+      <p>
+        Underneath the journey sat <strong>nine priority concepts</strong> — CareFree predictive
+        service, Ford Intelligence, FordPass Rewards 2.0, discussions.ford.com,
+        Virtual Garage, The Lot marketplace, VoltShare, Ford Town Square, and Feel
+        The Drive. Each was pitched with a thesis, business model, value-creation logic,
+        right-to-win, and the assumptions to validate next — ready for the venture board
+        to greenlight into IS2.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Figure 05 — Hero journey video -->
+<figure class="figure">
+  <div class="frame" style="padding:0;background:#000;border:0">
+    <video controls preload="metadata" playsinline style="width:100%;height:auto;display:block">
+      <source src="../assets/video/elektra-hero-journey.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+  <figcaption class="figcap"><span class="n">05</span>Final hero journey — the aspirational ownership experience, told end-to-end.</figcaption>
+</figure>
+
+<hr class="sec-rule">
+
+<section class="results" id="results">
+  <div class="results-head">
+    <h2><em>Results</em></h2>
+    <span class="note">At venture-board handoff</span>
+  </div>
+  <div class="rgrid">
+    <div class="stat">
+      <span class="tag">Concepts</span>
+      <span class="big">9</span>
+      <p>Priority concepts identified and pitched — from predictive maintenance to experiential retail and an integrated loyalty program.</p>
+    </div>
+    <div class="stat">
+      <span class="tag">Brand pillars</span>
+      <span class="big">4</span>
+      <p>A validated 2025 hero journey aligned to Welcoming, Straightforward, Passionate, and Ingenious.</p>
+    </div>
+    <div class="stat">
+      <span class="tag">Alignment</span>
+      <span class="big">100<em>%</em></span>
+      <p>Venture-board alignment on desirability, strategic fit, and next-phase focus — clearing the path to concept definition and investment.</p>
+    </div>
+    <div class="stat">
+      <span class="tag">Assumptions logged</span>
+      <span class="big">IS<em>2</em></span>
+      <p>Key assumptions documented for the follow-up sprint — including 30% consumer interest in connected service and 4% independent-shop adoption.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="foot-inner">
+    <span>← <a href="index.html">All work</a></span>
+    <span>© 2026 Andrea Noble · New Jersey and New York</span>
+    <span>Next — <a href="service-oklahoma.html">Service Oklahoma</a> →</span>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,985 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SoFi for Small Business · Andrea Noble</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600;1,6..72,700&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFFFFF;
+  --ink:#1C231F;
+  --ink-2:#3A4A3F;
+  --muted:#7C8579;
+  --rule:#DCD3BE;
+  --accent:#AAAA46;
+  --accent-soft:#AAAA46;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+html,body{margin:0;padding:0}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:'Newsreader',Georgia,serif;
+  font-size:18px;line-height:1.6;
+  font-feature-settings:"liga","kern";
+}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--accent);color:#fff}
+
+/* ---------- nav ---------- */
+.nav{border-bottom:1px solid var(--rule);background:var(--bg)}
+.nav-inner{
+  max-width:1180px;margin:0 auto;padding:22px 40px;
+  display:flex;align-items:center;justify-content:space-between;gap:24px;
+}
+.logo img{height:26px;width:auto;display:block}
+.nav-links{display:flex;gap:28px}
+.nav-links a{
+  font-family:'Work Sans',sans-serif;font-weight:600;
+  font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink-2);
+}
+.nav-links a:hover{color:var(--accent)}
+
+/* ---------- hero ---------- */
+.hero{max-width:1180px;margin:0 auto;padding:47px 40px 27px}
+.back{
+  font-family:'Work Sans',sans-serif;font-weight:600;
+  font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--muted);
+  display:inline-block;margin-bottom:36px;
+}
+.back:hover{color:var(--accent)}
+
+.hero-grid{
+  display:grid;grid-template-columns:200px 1fr;gap:60px;align-items:start;
+}
+.hero-aside{min-width:0}
+.meta-row{
+  display:flex;flex-direction:column;gap:3px;
+  font-family:'Newsreader',serif;font-style:normal;font-weight:400;
+  font-size:15px;color:var(--muted);margin:0 0 28px;
+}
+.meta-row span:first-child{
+  color:var(--accent);font-style:normal;
+  font-family:'Work Sans',sans-serif;font-size:12px;letter-spacing:.14em;
+  text-transform:uppercase;margin-bottom:6px;
+}
+
+.facts{
+  display:flex;flex-direction:column;gap:0;margin:0;
+  border-top:1px solid var(--ink);
+}
+.facts > div{padding:18px 0;border-bottom:1px solid var(--rule)}
+.facts dt{
+  font-family:'Newsreader',serif;font-style:normal;font-weight:400;
+  font-size:14px;color:var(--muted);margin-bottom:6px;
+}
+.facts dd{margin:0;font-family:'Newsreader',serif;font-size:17px;line-height:1.35;color:var(--ink)}
+
+.hero-main{min-width:0}
+.kicker{
+  font-family:'Newsreader',serif;font-style:normal;font-weight:400;
+  font-size:17px;color:var(--accent);margin:0 0 18px;
+}
+.hero h1{
+  font-family:'Newsreader',serif;font-weight:600;
+  font-size:clamp(44px,6.2vw,88px);line-height:1;letter-spacing:-.025em;
+  margin:0 0 32px;max-width:17ch;color:var(--ink);
+}
+.hero h1 em{font-style:normal;font-weight:600;color:var(--accent)}
+
+.lede{
+  font-family:'Newsreader',serif;font-weight:600;font-style:normal;
+  font-size:clamp(20px,2.2vw,26px);line-height:1.45;color:#000;
+  max-width:58ch;margin:0;
+}
+
+/* ---------- figure ---------- */
+.figure{max-width:1180px;margin:60px auto;padding:0 40px}
+.figure .frame{
+  background:#F1EAD8;border:1px solid var(--rule);
+  padding:48px 32px;
+}
+.figure .frame--video{padding:0;background:#000;border:0}
+.video-wrap{position:relative;width:100%;aspect-ratio:16/9;background:#000}
+.video-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
+.video-poster{
+  position:absolute;inset:0;width:100%;height:100%;
+  background-size:cover;background-position:center;
+  border:0;padding:0;margin:0;cursor:pointer;
+  display:flex;align-items:flex-end;justify-content:flex-start;
+  overflow:hidden;
+}
+.video-poster::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,.55) 100%);
+  transition:opacity .25s ease;
+}
+.video-poster:hover::after{opacity:.75}
+.video-poster .play{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:78px;height:78px;border-radius:50%;
+  background:rgba(255,255,255,.95);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 10px 30px rgba(0,0,0,.35);
+  transition:transform .25s ease, background .25s ease;
+}
+.video-poster:hover .play{transform:translate(-50%,-50%) scale(1.06);background:var(--accent)}
+.video-poster:hover .play svg path{fill:#fff}
+.video-poster .play svg{width:28px;height:28px;display:block;margin-left:4px}
+.video-poster .play svg path{fill:var(--ink);transition:fill .25s ease}
+.video-poster .cta{
+  position:relative;z-index:1;margin:24px 28px;
+  font-family:'Newsreader',serif;font-style:normal;font-weight:400;
+  font-size:16px;color:#FFFFFF;letter-spacing:.01em;
+  text-shadow:0 1px 8px rgba(0,0,0,.4);
+}
+.figcap{
+  margin-top:14px;
+  font-family:'Newsreader',serif;font-style:normal;font-weight:400;
+  font-size:15px;color:var(--muted);
+}
+.figcap .n{color:var(--accent);font-style:normal;margin-right:10px}
+
+/* ---------- section ---------- */
+.sec{max-width:1180px;margin:0 auto;padding:47px 40px}
+.sec-rule{
+  max-width:1180px;margin:0 auto;padding:0 40px;border:0;
+  height:1px;background:transparent;position:relative;
+}
+.sec-rule::before{
+  content:"";position:absolute;left:40px;right:40px;top:0;
+  height:1px;background:#E3DCCA;
+}
+.sec-grid{display:grid;grid-template-columns:200px 1fr;gap:60px;align-items:start}
+.sec-label{
+  position:sticky;top:24px;
+  font-family:'Newsreader',serif;font-weight:400;font-size:22px;line-height:1.2;color:var(--ink);
+}
+.sec-label .n{
+  display:block;font-family:'Newsreader',serif;font-style:normal;font-weight:600;
+  font-size:52px;letter-spacing:-.02em;color:var(--accent);line-height:1;margin-bottom:10px;
+}
+.sec-body{max-width:68ch}
+.sec-body p{margin:0 0 22px}
+.sec-body p strong{font-weight:400;color:var(--ink)}
+.sec-body p em{color:var(--ink);font-style:normal;font-weight:600}
+
+/* ---------- pull quote ---------- */
+.pull{max-width:900px;margin:13px auto;padding:40px 40px;text-align:center}
+.pull blockquote{
+  margin:0;font-family:'Newsreader',serif;font-weight:600;font-style:normal;
+  font-size:clamp(26px,3.2vw,40px);line-height:1.3;letter-spacing:-.01em;color:var(--ink);
+}
+.pull blockquote::before,
+.pull blockquote::after{color:var(--accent);font-size:1.3em;line-height:0}
+.pull blockquote::before{content:"“";margin-right:4px;vertical-align:-.25em}
+.pull blockquote::after{content:"”";margin-left:2px;vertical-align:-.25em}
+.pull cite{
+  display:block;margin-top:24px;font-style:normal;font-weight:400;
+  font-family:'Newsreader',serif;font-size:15px;color:var(--muted);
+}
+
+/* ---------- results ---------- */
+.results{max-width:1180px;margin:0 auto;padding:60px 40px 80px}
+.results-head{
+  display:flex;justify-content:space-between;align-items:baseline;gap:20px;flex-wrap:wrap;
+  border-top:1px solid #E3DCCA;padding:16px 0;margin-bottom:40px;
+}
+.results-head h2{
+  margin:0;font-family:'Newsreader',serif;font-weight:600;
+  font-size:clamp(32px,4vw,52px);letter-spacing:-.02em;
+}
+.results-head h2 em{font-style:normal;color:var(--accent);font-weight:600}
+.results-head .note{
+  font-family:'Newsreader',serif;font-style:normal;font-size:15px;color:var(--muted);
+}
+
+.rgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--rule)}
+.stat{padding:36px 30px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.stat:first-child{padding-left:0}
+.stat:last-child{border-right:0;padding-right:0}
+.stat .tag{
+  display:block;margin-bottom:14px;
+  font-family:'Newsreader',serif;font-style:normal;font-weight:400;
+  font-size:15px;color:var(--muted);
+}
+.stat .big{
+  font-family:'Newsreader',serif;font-weight:600;
+  font-size:clamp(46px,5.6vw,76px);line-height:1;letter-spacing:-.025em;color:var(--ink);
+  display:block;margin-bottom:12px;
+}
+.stat .big em{font-style:normal;color:var(--ink);font-weight:600}
+.stat .big em.to{
+  font-family:'Newsreader',serif;font-style:normal;font-weight:600;
+  font-size:.6em;color:var(--ink);margin:0 .04em;vertical-align:.18em;
+}
+.stat p{margin:0;font-size:15px;line-height:1.5;color:var(--ink-2)}
+
+/* ---------- foot ---------- */
+.foot{border-top:1px solid var(--rule);padding:24px 0}
+.foot-inner{
+  max-width:1180px;margin:0 auto;padding:0 40px;
+  display:flex;justify-content:space-between;align-items:center;gap:20px;
+  font-family:'Newsreader',serif;font-style:normal;font-size:15px;color:var(--muted);
+}
+.foot a{color:var(--ink);font-style:normal}
+.foot a:hover{color:var(--accent)}
+
+/* ---------- SVG illustrations ---------- */
+.ill{width:100%;height:auto;display:block}
+.ill text{font-family:'Newsreader',serif}
+.ill .label{font-family:'Newsreader',serif;font-style:normal;font-weight:400;font-size:13px;fill:var(--muted)}
+.ill .num{font-family:'Newsreader',serif;font-weight:600;letter-spacing:-.02em;fill:var(--ink)}
+.ill .accent{fill:var(--accent)}
+
+.jump-results{display:inline-flex;align-items:center;gap:10px;margin-top:28px;font-family:'Work Sans',sans-serif;font-weight:600;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);transition:color .2s ease}
+.jump-results:hover{color:var(--ink)}
+.jump-results .arr{display:inline-block;font-family:'Newsreader',serif;font-style:normal;font-weight:600;font-size:18px;letter-spacing:0;text-transform:none;transform:translateY(1px);transition:transform .2s ease}
+.jump-results:hover .arr{transform:translateY(4px)}
+
+@media (max-width:820px){
+  .sec-grid{grid-template-columns:1fr;gap:24px}
+  .sec-label{position:static}
+  .hero-grid{grid-template-columns:1fr;gap:32px}
+  .rgrid{grid-template-columns:1fr 1fr}
+  .stat{padding:36px 30px}
+  .stat:nth-child(odd){padding-left:0;padding-right:30px;border-right:1px solid var(--rule)}
+  .stat:nth-child(even){padding-left:30px;padding-right:0;border-right:0}
+  .hero h1{font-size:clamp(44px,9vw,72px)}
+  .figure .frame{padding:28px 18px}
+}
+
+em,i{font-style:normal}
+
+.hero-main .kicker{color:#404040}
+
+/* ---------- tldr ---------- */
+.tldr-wrap{max-width:1180px;margin:0 auto;padding:20px 40px 0}
+.tldr{
+  border:1px solid #DDDDB5;background:#F2F2E3;
+  padding:28px 32px;
+  display:grid;grid-template-columns:200px minmax(0,calc(68ch - 32px)) 1fr;gap:28px;align-items:baseline;
+}
+.tldr-label{
+  font-family:'Work Sans',sans-serif;font-weight:600;font-size:12px;
+  letter-spacing:.16em;text-transform:uppercase;color:#76762C;
+}
+.tldr p{margin:0;font-family:'Newsreader',serif;font-weight:600;font-size:20px;line-height:1.5;color:var(--ink)}
+@media (max-width:820px){
+  .tldr{grid-template-columns:1fr;gap:12px;padding:22px 20px}
+  .tldr-wrap{padding:16px 20px 0}
+}
+
+/* ---------- results box ---------- */
+.results{
+  width:calc(100% - 80px);max-width:1100px;margin:60px auto;
+  padding:40px 32px 44px;
+  background:#F2F2E3;border:1px solid #DDDDB5;
+}
+.results-head{border-top:0;padding-top:0}
+.results .stat{border-bottom:0;padding-bottom:8px}
+@media (max-width:820px){
+  .results{width:calc(100% - 40px);padding:28px 20px 32px}
+}
+
+/* ---------- tldr: solid ---------- */
+.tldr{background:var(--accent);border-color:var(--accent);color:#fff}
+.tldr-label{color:#fff;display:flex;flex-direction:column;gap:14px;align-self:start;font-size:22px;letter-spacing:.12em}
+.tldr-label svg{width:34px;height:34px;display:block}
+.tldr p{font-family:'Work Sans',sans-serif;font-weight:600;font-size:17px;line-height:1.55;color:#fff}
+@media (max-width:820px){.tldr-label{flex-direction:row;align-items:center}.tldr-label svg{width:26px;height:26px}}
+
+/* ---------- neutral grey rules ---------- */
+.figure .frame{border-color:#D9D9D9}
+.sec-rule::before{background:#D9D9D9}
+/* results: scale big figures to their column so they never overflow */
+.results .rgrid{container-type:inline-size}
+.results .stat .big{font-size:min(68px,calc((25cqi - 60px) * .27));white-space:nowrap}
+.results .stat .big.long{font-size:min(62px,calc((25cqi - 60px) * .21))}
+@media (max-width:820px){.results .stat .big{font-size:min(68px,calc((50cqi - 30px) * .27))}.results .stat .big.long{font-size:min(62px,calc((50cqi - 30px) * .21))}}
+/* consistent spacing: text -> figure matches figure -> figure */
+.sec-body > :last-child{margin-bottom:0}
+.sec:has(+ .figure){padding-bottom:0}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="logo" href="index.html">
+      <img src="../assets/brand/logo.png" alt="Andrea Noble Design">
+    </a>
+    <nav class="nav-links">
+      <a href="index.html#work">Work</a>
+      <a href="index.html#about">About</a>
+      <a href="../assets/AndreaNoble_Resume.pdf" target="_blank" rel="noopener">Resume</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <a class="back" href="index.html">← All work</a>
+  <div class="hero-grid">
+    <aside class="hero-aside">
+      <dl class="facts">
+        <div><dt>Project Name</dt><dd>SoFi for Small Business</dd></div>
+        <div><dt>Role</dt><dd>Strategic design lead</dd></div>
+        <div><dt>Phase</dt><dd>Validation Sprint</dd></div>
+        <div><dt>Timeframe</dt><dd>2023</dd></div>
+      </dl>
+    </aside>
+    <div class="hero-main">
+      <h1>Scoping SoFi's entry into <em>small-business banking.</em></h1>
+      <p class="lede">
+        Small-business banking drives 44% of US GDP but remains under-served by
+        incumbents and digital-first players alike. Our sprint de-risked SoFi's bet,
+        validated the segments, and scoped the build.
+      </p>
+      <a class="jump-results" href="#results">Jump to results <span class="arr">↓</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- Figure 01 — Market opportunity -->
+<figure class="figure">
+  <div class="frame">
+    <svg class="ill" viewBox="0 0 1040 400" role="img" aria-label="SMB market opportunity: 44% of US GDP, 57% open to new banking, and a root-need gap around guidance and time">
+      <!-- 44% block -->
+      <g transform="translate(60,60)">
+        <rect x="0" y="40" width="280" height="220" fill="#AAAA46"/>
+        <text class="num" x="20" y="170" font-size="120" font-style="normal" fill="#AAAA46">44<tspan font-size="60" dy="-50">%</tspan></text>
+        <text class="label" x="20" y="222" style="font-size:15px;fill:#1C231F" font-style="normal">of US GDP</text>
+        <text class="label" x="20" y="246">generated by small business.</text>
+      </g>
+
+      <!-- 57% block -->
+      <g transform="translate(380,60)">
+        <rect x="0" y="40" width="280" height="220" fill="#F9F5EE"/>
+        <text class="num" x="20" y="170" font-size="120">57<tspan font-size="60" dy="-50">%</tspan></text>
+        <text class="label" x="20" y="222" style="font-size:15px;fill:#1C231F" font-style="normal">of SMBs open to new</text>
+        <text class="label" x="20" y="246">banking solutions today.</text>
+      </g>
+
+      <!-- gap callout -->
+      <g transform="translate(700,60)">
+        <rect x="0" y="40" width="280" height="220" fill="#1C231F"/>
+        <text class="label" x="20" y="80" style="font-size:12px;fill:#AAAA46;letter-spacing:.14em" font-style="normal">THE GAP</text>
+        <text x="20" y="150" font-family="Newsreader" font-style="normal" font-weight="300" font-size="30" fill="#FFFFFF">Guidance &amp; Time</text>
+        <text class="label" x="20" y="216" style="font-size:14px;fill:#AAAA46" font-style="normal">Root needs unmet by</text>
+        <text class="label" x="20" y="238" style="font-size:14px;fill:#AAAA46" font-style="normal">incumbents &amp; fintechs alike.</text>
+      </g>
+
+      <!-- connector rule -->
+      <line x1="60" y1="345" x2="980" y2="345" stroke="#DCD3BE" stroke-width="1"/>
+      <text class="label" x="60" y="370" style="font-size:13px">Sources: US Small Business Administration; SoFi market sizing, 2023.</text>
+    </svg>
+  </div>
+  <figcaption class="figcap"><span class="n">01</span>The opportunity — a $3T revenue pool with a clear, unmet need gap that SoFi is positioned to fill.</figcaption>
+</figure>
+
+<div class="tldr-wrap">
+  <aside class="tldr" aria-label="TLDR">
+    <div class="tldr-label">TLDR:<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"/></svg></div>
+    <p>Placeholder summary sentence one describes the client and the challenge they faced. Placeholder sentence two explains the approach and the work we did together. Placeholder sentence three captures the outcome and why it mattered.</p>
+  </aside>
+</div>
+
+<section class="sec">
+  <div class="sec-grid">
+    <div class="sec-label"><span class="n">01</span>The objective</div>
+    <div class="sec-body">
+      <p>
+        SoFi saw an opening in small-business banking — <strong>44% of US GDP, with 57% of SMBs
+        open to new banking solutions</strong> — yet root needs around guidance and time remained
+        unmet by incumbents and digital-first players alike.
+      </p>
+      <p>
+        We were brought in to answer four venture-board questions with rigor:
+        <em>will members adopt, can we win, will it make money, and can we build it?</em>
+      </p>
+    </div>
+  </div>
+</section>
+
+<hr class="sec-rule">
+
+<section class="sec">
+  <div class="sec-grid">
+    <div class="sec-label"><span class="n">02</span>What we did</div>
+    <div class="sec-body">
+      <p>
+        We interviewed <strong>28 potential members</strong> across four regions and three personas —
+        Solopreneurs, Wayfinding Employers, and Established Employers — plus nine
+        competitive experts. A <strong>744-respondent quant study</strong> (527 prospects, 217 existing
+        SoFi members) validated desirability at scale.
+      </p>
+      <p>
+        An <strong>interactive Figma prototype</strong> with 8 core features and 5 investment
+        deep-dives surfaced real user reactions, while a <em>risk burndown framework</em> mapped
+        what we knew, what we assumed, and what needed continued testing against the four
+        venture-board questions.
+      </p>
+      <p>
+        We modeled a <strong>five-year financial plan</strong> (base, bull, bear) projecting 144K
+        members, $310M revenue, and $92M pretax income by Year 5 — and scoped the Minimum
+        Marketable Product into <strong>four cross-functional squads</strong>: Sign-up &amp; Onboarding,
+        Core Banking, Lending, and Expert Team.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Figure 02 — Research footprint -->
+<figure class="figure">
+  <div class="frame">
+    <svg class="ill" viewBox="0 0 1040 320" role="img" aria-label="Research footprint: 28 qualitative interviews, 744 quant respondents, 3 personas">
+      <g transform="translate(60,80)">
+        <text class="num" x="0" y="80" font-size="110">28</text>
+        <text class="label" x="0" y="120" style="font-size:15px">Qualitative interviews</text>
+        <text class="label" x="0" y="146">Across 4 US regions, plus 9 competitive</text>
+        <text class="label" x="0" y="168">experts from incumbent &amp; fintech banks.</text>
+      </g>
+
+      <line x1="360" y1="70" x2="360" y2="250" stroke="#DCD3BE" stroke-width="1"/>
+
+      <g transform="translate(400,80)">
+        <text class="num accent" x="0" y="80" font-size="110" font-style="normal">744</text>
+        <text class="label" x="0" y="120" style="font-size:15px">Quant respondents</text>
+        <text class="label" x="0" y="146">527 prospects + 217 existing SoFi</text>
+        <text class="label" x="0" y="168">members — desirability at scale.</text>
+      </g>
+
+      <line x1="740" y1="70" x2="740" y2="250" stroke="#DCD3BE" stroke-width="1"/>
+
+      <g transform="translate(780,80)">
+        <text class="num" x="0" y="80" font-size="110">3</text>
+        <text class="label" x="0" y="120" style="font-size:15px">SMB personas</text>
+        <text class="label" x="0" y="146">Solopreneurs, Wayfinding Employers,</text>
+        <text class="label" x="0" y="168">&amp; Established Employers.</text>
+      </g>
+    </svg>
+  </div>
+  <figcaption class="figcap"><span class="n">02</span>Research footprint — 28 qualitative interviews, a 744-respondent quant study, and three distinct SMB personas.</figcaption>
+</figure>
+
+<section class="pull">
+  <blockquote>
+    If everything could be in one dedicated place, that would be major. It
+    would make everything streamlined so I can stop dealing with day-to-day
+    finances and focus on growing my business.
+  </blockquote>
+  <cite>Peter C. · Wayfinding Employer</cite>
+</section>
+
+<!-- Figure 03 — Feature set × jobs-to-be-done × personas -->
+<figure class="figure">
+  <div class="frame">
+    <svg class="ill" viewBox="0 0 1040 640" role="img" aria-label="Feature set mapped to jobs-to-be-done across three SMB personas">
+      <g font-family="Work Sans, sans-serif">
+        <!-- Header -->
+        <text x="60" y="40" font-size="10" letter-spacing="2" fill="#7C8579">FIG. 03 · FEATURE SET × JOBS-TO-BE-DONE</text>
+        <text x="60" y="76" font-family="Newsreader" font-style="normal" font-size="24" fill="#1C231F">Our feature set solves the most acute pain points</text>
+        <text x="60" y="102" font-family="Newsreader" font-style="normal" font-size="24" fill="#1C231F">for each persona across their journey.</text>
+        <line x1="60" y1="120" x2="980" y2="120" stroke="#1C231F"/>
+
+        <!-- Row labels -->
+        <g transform="translate(34,268) rotate(-90)"><text font-size="9" letter-spacing="2" fill="#7C8579" text-anchor="middle">JOBS TO BE DONE</text></g>
+        <g transform="translate(34,430) rotate(-90)"><text font-size="9" letter-spacing="2" fill="#7C8579" text-anchor="middle">FEATURES</text></g>
+
+        <!-- Column 1: Get Started -->
+        <rect x="60" y="140" width="112" height="48" fill="#1C231F"/>
+        <text x="70" y="162" font-size="12" fill="#FFFFFF" font-weight="600">Get Started</text>
+        <rect x="60" y="196" width="112" height="56" fill="#AAAA46"/>
+        <text x="116" y="228" font-size="11" fill="#1C231F" font-weight="600" text-anchor="middle">Expert Team</text>
+        <g font-size="10.5" fill="#3A4A3F">
+          <text x="70" y="280">No Fees, No Min</text>
+          <text x="70" y="294">Balance</text>
+          <text x="70" y="326">Transparency</text>
+          <text x="70" y="340">Between Personal</text>
+          <text x="70" y="354">&amp; Business Accts</text>
+          <text x="70" y="386">Customer</text>
+          <text x="70" y="400">Support</text>
+        </g>
+
+        <!-- Column 2: Get Paid -->
+        <rect x="176" y="140" width="112" height="48" fill="#1C231F"/>
+        <text x="186" y="162" font-size="12" fill="#FFFFFF" font-weight="600">Get Paid</text>
+        <g font-size="10.5" fill="#3A4A3F">
+          <text x="186" y="218">Seamless</text>
+          <text x="186" y="232">Payment</text>
+          <text x="186" y="246">Collection and</text>
+          <text x="186" y="260">Invoicing</text>
+        </g>
+
+        <!-- Column 3: Manage Finances -->
+        <rect x="292" y="140" width="112" height="48" fill="#1C231F"/>
+        <text x="302" y="162" font-size="12" fill="#FFFFFF" font-weight="600">Manage</text>
+        <text x="302" y="178" font-size="12" fill="#FFFFFF" font-weight="600">Finances</text>
+        <rect x="292" y="196" width="112" height="40" fill="#AAAA46"/>
+        <text x="348" y="214" font-size="10.5" fill="#1C231F" font-weight="600" text-anchor="middle">Checking Account</text>
+        <text x="348" y="228" font-size="10.5" fill="#1C231F" font-weight="600" text-anchor="middle">with Interest</text>
+        <rect x="292" y="244" width="112" height="40" fill="#AAAA46"/>
+        <text x="348" y="262" font-size="10.5" fill="#FFFFFF" font-weight="600" text-anchor="middle">Adaptive Company</text>
+        <text x="348" y="276" font-size="10.5" fill="#FFFFFF" font-weight="600" text-anchor="middle">Cards</text>
+        <rect x="292" y="292" width="112" height="28" fill="#1C231F"/>
+        <text x="348" y="310" font-size="10.5" fill="#FFFFFF" font-weight="600" text-anchor="middle">Control Center</text>
+        <rect x="292" y="328" width="112" height="40" fill="#8C9387"/>
+        <text x="348" y="346" font-size="10.5" fill="#FFFFFF" font-weight="600" text-anchor="middle">Savings Account</text>
+        <text x="348" y="360" font-size="10.5" fill="#FFFFFF" font-weight="600" text-anchor="middle">w/ Comp. APY</text>
+        <text x="302" y="394" font-size="10.5" fill="#3A4A3F">ATM Network</text>
+
+        <!-- Column 4: Get Capital -->
+        <rect x="408" y="140" width="112" height="48" fill="#1C231F"/>
+        <text x="418" y="162" font-size="12" fill="#FFFFFF" font-weight="600">Get Capital</text>
+        <rect x="408" y="196" width="112" height="40" fill="#8C9387"/>
+        <text x="464" y="214" font-size="10.5" fill="#FFFFFF" font-weight="600" text-anchor="middle">Business Credit-</text>
+        <text x="464" y="228" font-size="10.5" fill="#FFFFFF" font-weight="600" text-anchor="middle">Building Card</text>
+        <rect x="408" y="244" width="112" height="28" fill="#AAAA46"/>
+        <text x="464" y="262" font-size="10.5" fill="#FFFFFF" font-weight="600" text-anchor="middle">Smart Lending</text>
+        <g font-size="10.5" fill="#3A4A3F">
+          <text x="418" y="296">Business Credit</text>
+          <text x="418" y="310">Card with</text>
+          <text x="418" y="324">Rewards</text>
+        </g>
+
+        <!-- Column 5: Pay Workers -->
+        <rect x="524" y="140" width="112" height="48" fill="#1C231F"/>
+        <text x="534" y="162" font-size="12" fill="#FFFFFF" font-weight="600">Pay Workers</text>
+        <g font-size="10.5" fill="#3A4A3F">
+          <text x="534" y="218">Integration With</text>
+          <text x="534" y="232">Accounting,</text>
+          <text x="534" y="246">Payroll, and</text>
+          <text x="534" y="260">e-Commerce</text>
+          <text x="534" y="274">Platforms.</text>
+          <text x="534" y="298">Easy Money</text>
+          <text x="534" y="312">Movement.</text>
+        </g>
+
+        <!-- Column 6: Access Advice -->
+        <rect x="640" y="140" width="112" height="48" fill="#1C231F"/>
+        <text x="650" y="162" font-size="12" fill="#FFFFFF" font-weight="600">Access Advice</text>
+        <rect x="640" y="196" width="112" height="28" fill="#8C9387"/>
+        <text x="696" y="214" font-size="10.5" fill="#FFFFFF" font-weight="600" text-anchor="middle">Expert Content</text>
+        <rect x="640" y="232" width="112" height="28" fill="#AAAA46"/>
+        <text x="696" y="250" font-size="10.5" fill="#FFFFFF" font-weight="600" text-anchor="middle">Money Maximizer</text>
+
+        <!-- Column 7: Be Compliant -->
+        <rect x="756" y="140" width="112" height="48" fill="#1C231F"/>
+        <text x="766" y="162" font-size="12" fill="#FFFFFF" font-weight="600">Be</text>
+        <text x="766" y="178" font-size="12" fill="#FFFFFF" font-weight="600">Compliant</text>
+        <rect x="756" y="196" width="112" height="40" fill="#AAAA46"/>
+        <text x="812" y="214" font-size="10.5" fill="#FFFFFF" font-weight="600" text-anchor="middle">Accounting</text>
+        <text x="812" y="228" font-size="10.5" fill="#FFFFFF" font-weight="600" text-anchor="middle">Sidekick</text>
+
+        <!-- Column 8: Serve Customers -->
+        <rect x="872" y="140" width="112" height="48" fill="#1C231F"/>
+        <text x="882" y="162" font-size="12" fill="#FFFFFF" font-weight="600">Serve</text>
+        <text x="882" y="178" font-size="12" fill="#FFFFFF" font-weight="600">Customers</text>
+        <g font-family="Newsreader" font-style="normal" font-size="11.5" fill="#1C231F">
+          <text x="882" y="220">All of our</text>
+          <text x="882" y="236">features enable</text>
+          <text x="882" y="252">SMBs to focus</text>
+          <text x="882" y="268">on what they</text>
+          <text x="882" y="284">do best.</text>
+        </g>
+
+        <!-- Column background tints for legibility -->
+        <!-- Thin underlines separating feature rows -->
+        <line x1="60" y1="444" x2="980" y2="444" stroke="#DCD3BE"/>
+
+        <!-- Legend -->
+        <g>
+          <rect x="60" y="464" width="140" height="40" fill="none" stroke="#1C231F" stroke-width="1"/>
+          <text x="130" y="480" font-size="10.5" fill="#1C231F" text-anchor="middle">Features in a box =</text>
+          <text x="130" y="494" font-size="10.5" fill="#1C231F" text-anchor="middle" font-weight="600">Hero Features</text>
+
+          <text x="220" y="480" font-size="10.5" fill="#1C231F">Features not in a box =</text>
+          <text x="220" y="494" font-size="10.5" fill="#1C231F" font-weight="600">Supporting Features</text>
+        </g>
+
+        <!-- Persona swatches -->
+        <g>
+          <circle cx="70" cy="548" r="10" fill="#AAAA46"/>
+          <text x="90" y="552" font-size="11.5" fill="#1C231F">Solopreneurs</text>
+
+          <circle cx="230" cy="548" r="10" fill="#AAAA46"/>
+          <text x="250" y="552" font-size="11.5" fill="#1C231F">Wayfinding Employers</text>
+
+          <circle cx="430" cy="548" r="10" fill="#8C9387"/>
+          <text x="450" y="552" font-size="11.5" fill="#1C231F">Established Employers</text>
+
+          <rect x="632" y="538" width="20" height="20" fill="#1C231F"/>
+          <text x="660" y="552" font-size="11.5" fill="#1C231F">All Personas</text>
+        </g>
+
+        <!-- Color-coding note -->
+        <line x1="60" y1="584" x2="980" y2="584" stroke="#DCD3BE"/>
+        <text x="60" y="608" font-size="10" fill="#7C8579">Box fill indicates which personas the hero feature serves. Jethro, 2023.</text>
+      </g>
+    </svg>
+  </div>
+  <figcaption class="figcap"><span class="n">03</span>Feature set × jobs-to-be-done — hero features mapped to the journey moments they resolve, shaded by persona.</figcaption>
+</figure>
+
+<!-- Figure 04 — Five-year financial model -->
+<figure class="figure">
+  <div class="frame">
+    <svg class="ill" viewBox="0 0 1040 620" role="img" aria-label="Five-year financial model: revenue, expense, EBITDA, and account growth">
+      <g font-family="Work Sans, sans-serif">
+        <!-- Header -->
+        <text x="60" y="44" font-size="10" letter-spacing="2" fill="#7C8579">FIG. 04 · FIVE-YEAR FINANCIAL MODEL</text>
+        <text x="60" y="78" font-family="Newsreader" font-style="normal" font-size="26" fill="#1C231F">From $18M to $310M in five years</text>
+        <text x="60" y="100" font-size="12" fill="#7C8579">Base case assumes 40% YoY account growth in Y2–Y3 decelerating to 22% by Y5, $1,380 ARPU blended across segments.</text>
+        <line x1="60" y1="118" x2="980" y2="118" stroke="#1C231F"/>
+
+        <!-- Chart area: y=150 (top) to y=400 (baseline), height=250 -->
+        <!-- Revenue scale: 0–$320M -->
+        <g font-size="10" fill="#7C8579">
+          <line x1="120" y1="150" x2="980" y2="150" stroke="#E6DECA"/>
+          <text x="112" y="154" text-anchor="end">$320M</text>
+          <line x1="120" y1="213" x2="980" y2="213" stroke="#E6DECA"/>
+          <text x="112" y="217" text-anchor="end">$240M</text>
+          <line x1="120" y1="275" x2="980" y2="275" stroke="#E6DECA"/>
+          <text x="112" y="279" text-anchor="end">$160M</text>
+          <line x1="120" y1="338" x2="980" y2="338" stroke="#E6DECA"/>
+          <text x="112" y="342" text-anchor="end">$80M</text>
+        </g>
+        <line x1="120" y1="400" x2="980" y2="400" stroke="#1C231F"/>
+
+        <!-- Revenue bars (scale: val/320 * 250). Years: 18, 62, 138, 228, 310 -->
+        <!-- Expense bars behind (smaller, peach). Expenses: 24, 58, 108, 158, 219 (70% cost-to-income at Y5) -->
+        <!-- Plot each year as two stacked narrow bars side-by-side -->
+        <!-- Column centers: 210, 370, 530, 690, 850. Bar widths: 46 each, gap 8 -->
+
+        <!-- Y1 rev=18 (h=14), exp=24 (h=19) -->
+        <rect x="187" y="386" width="46" height="14" fill="#AAAA46"/>
+        <rect x="241" y="381" width="46" height="19" fill="#F1EAD8" stroke="#DCD3BE"/>
+        <!-- Y2 rev=62 (h=48), exp=58 (h=45) -->
+        <rect x="347" y="352" width="46" height="48" fill="#AAAA46"/>
+        <rect x="401" y="355" width="46" height="45" fill="#F1EAD8" stroke="#DCD3BE"/>
+        <!-- Y3 rev=138 (h=108), exp=108 (h=84) -->
+        <rect x="507" y="292" width="46" height="108" fill="#AAAA46"/>
+        <rect x="561" y="316" width="46" height="84" fill="#F1EAD8" stroke="#DCD3BE"/>
+        <!-- Y4 rev=228 (h=178), exp=158 (h=123) -->
+        <rect x="667" y="222" width="46" height="178" fill="#AAAA46"/>
+        <rect x="721" y="277" width="46" height="123" fill="#AAAA46"/>
+        <!-- Y5 rev=310 (h=242), exp=219 (h=171) -->
+        <rect x="827" y="158" width="46" height="242" fill="#AAAA46"/>
+        <rect x="881" y="229" width="46" height="171" fill="#AAAA46"/>
+
+        <!-- Bar value labels -->
+        <g font-family="Newsreader" font-style="normal" fill="#1C231F" font-size="12">
+          <text x="210" y="378" text-anchor="middle">$18M</text>
+          <text x="264" y="373" text-anchor="middle" fill="#7C8579">$24M</text>
+          <text x="370" y="344" text-anchor="middle">$62M</text>
+          <text x="424" y="347" text-anchor="middle" fill="#7C8579">$58M</text>
+          <text x="530" y="284" text-anchor="middle">$138M</text>
+          <text x="584" y="308" text-anchor="middle" fill="#7C8579">$108M</text>
+          <text x="690" y="214" text-anchor="middle" fill="#AAAA46" font-size="13">$228M</text>
+          <text x="744" y="269" text-anchor="middle" fill="#7C8579">$158M</text>
+          <text x="850" y="150" text-anchor="middle" fill="#AAAA46" font-size="15">$310M</text>
+          <text x="904" y="221" text-anchor="middle" fill="#7C8579">$219M</text>
+        </g>
+
+        <!-- EBITDA line overlay. EBITDA: -6, 4, 30, 70, 91. Scale -10→100 over 250h, baseline at 400 for 0. Actually plot on secondary scale. -->
+        <!-- Use simple markers on bar tops annotated, plus a dashed trend line of EBITDA -->
+        <!-- EBITDA position: map val/100 * 180 upward from y=400. -->
+        <!-- pts: (210, 389), (370, 393), (530, 346), (690, 274), (850, 236) -->
+        <polyline points="210,389 370,393 530,346 690,274 850,236" fill="none" stroke="#1C231F" stroke-width="1.5" stroke-dasharray="3 3"/>
+        <g fill="#1C231F">
+          <circle cx="210" cy="389" r="3"/>
+          <circle cx="370" cy="393" r="3"/>
+          <circle cx="530" cy="346" r="3"/>
+          <circle cx="690" cy="274" r="3"/>
+          <circle cx="850" cy="236" r="4" fill="#AAAA46"/>
+        </g>
+        <text x="856" y="230" font-family="Newsreader" font-style="normal" font-size="11" fill="#AAAA46">EBITDA $91M</text>
+        <text x="216" y="405" font-size="10" fill="#7C8579" font-style="normal">–$6M</text>
+
+        <!-- x-axis year labels & accounts -->
+        <g fill="#1C231F" letter-spacing="1.5">
+          <text x="237" y="428" text-anchor="middle" font-size="11" font-weight="600">YEAR 1</text>
+          <text x="237" y="444" text-anchor="middle" font-size="10.5" fill="#7C8579">14K accts</text>
+          <text x="397" y="428" text-anchor="middle" font-size="11" font-weight="600">YEAR 2</text>
+          <text x="397" y="444" text-anchor="middle" font-size="10.5" fill="#7C8579">46K accts</text>
+          <text x="557" y="428" text-anchor="middle" font-size="11" font-weight="600">YEAR 3</text>
+          <text x="557" y="444" text-anchor="middle" font-size="10.5" fill="#7C8579">101K accts</text>
+          <text x="717" y="428" text-anchor="middle" font-size="11" font-weight="600">YEAR 4</text>
+          <text x="717" y="444" text-anchor="middle" font-size="10.5" fill="#7C8579">166K accts</text>
+          <text x="877" y="428" text-anchor="middle" font-size="11" font-weight="600">YEAR 5</text>
+          <text x="877" y="444" text-anchor="middle" font-size="10.5" fill="#7C8579">224K accts</text>
+        </g>
+
+        <!-- Legend -->
+        <g font-size="10.5" fill="#7C8579">
+          <rect x="60" y="470" width="14" height="14" fill="#AAAA46"/>
+          <text x="82" y="481" fill="#1C231F">Revenue</text>
+          <rect x="180" y="470" width="14" height="14" fill="#AAAA46"/>
+          <text x="202" y="481" fill="#1C231F">Operating expense</text>
+          <line x1="360" y1="477" x2="390" y2="477" stroke="#1C231F" stroke-width="1.5" stroke-dasharray="3 3"/>
+          <text x="398" y="481" fill="#1C231F">EBITDA</text>
+        </g>
+
+        <!-- KPI footer -->
+        <line x1="60" y1="506" x2="980" y2="506" stroke="#DCD3BE"/>
+        <g font-size="10" fill="#7C8579" letter-spacing="2">
+          <text x="60" y="528">Y5 REVENUE</text>
+          <text x="260" y="528">Y5 EBITDA</text>
+          <text x="440" y="528">COST-TO-INCOME</text>
+          <text x="640" y="528">CAC PAYBACK</text>
+          <text x="820" y="528">BREAK-EVEN</text>
+        </g>
+        <g font-family="Newsreader" font-style="normal" fill="#1C231F" font-size="22">
+          <text x="60" y="558" fill="#AAAA46">$310M</text>
+          <text x="260" y="558">$91M</text>
+          <text x="440" y="558">70%</text>
+          <text x="640" y="558">18 mo.</text>
+          <text x="820" y="558">Y3 Q2</text>
+        </g>
+        <g font-size="11" fill="#7C8579">
+          <text x="60" y="578">net new revenue</text>
+          <text x="260" y="578">29% margin</text>
+          <text x="440" y="578">down from 138% Y1</text>
+          <text x="640" y="578">blended SMB</text>
+          <text x="820" y="578">~34 months from launch</text>
+        </g>
+
+        <!-- Sources -->
+        <line x1="60" y1="596" x2="980" y2="596" stroke="#DCD3BE"/>
+        <text x="60" y="614" font-size="10" fill="#7C8579">Source: SoFi + BCG X base-case model, 2023. Does not include capital markets upside or interchange float beyond Y3.</text>
+      </g>
+    </svg>
+  </div>
+  <figcaption class="figcap"><span class="n">04</span>Five-year model — <em>$310M revenue, $91M EBITDA, 70% cost-to-income ratio by Year 5.</em></figcaption>
+</figure>
+
+<!-- Figure 05 — Long-term roadmap -->
+<figure class="figure">
+  <div class="frame">
+    <svg class="ill" viewBox="0 0 1040 780" role="img" aria-label="Long-term vision roadmap: three-phase evolution with segment focus, feature releases, and success metrics per phase">
+      <g font-family="Work Sans, sans-serif">
+        <!-- Header -->
+        <text x="60" y="44" font-size="10" letter-spacing="2" fill="#7C8579">FIG. 05 · LONG-TERM VISION ROADMAP</text>
+        <text x="60" y="78" font-family="Newsreader" font-style="normal" font-size="26" fill="#1C231F">From solopreneur acquisition to destination bank</text>
+        <text x="60" y="100" font-size="12" fill="#7C8579">Three-phase build, sequenced by segment readiness and revenue unlock. Each phase gated by success criteria before the next begins.</text>
+        <line x1="60" y1="118" x2="980" y2="118" stroke="#1C231F"/>
+
+        <!-- Timeline spine -->
+        <text x="60" y="148" font-size="10" letter-spacing="2" fill="#7C8579">TIMELINE</text>
+        <line x1="60" y1="172" x2="980" y2="172" stroke="#1C231F" stroke-width="1"/>
+        <g>
+          <circle cx="180" cy="172" r="7" fill="#AAAA46"/>
+          <circle cx="500" cy="172" r="7" fill="#AAAA46"/>
+          <circle cx="820" cy="172" r="7" fill="#1C231F"/>
+        </g>
+        <g font-size="10.5" fill="#7C8579" letter-spacing="1.5">
+          <text x="100" y="192">Q4 '24 · LAUNCH</text>
+          <text x="420" y="192">Q1 '26 · SCALE</text>
+          <text x="760" y="192">Q3 '27 · CONSOLIDATE</text>
+        </g>
+
+        <!-- Phase blocks positioned below spine -->
+        <!-- Phase 01 -->
+        <g>
+          <rect x="60" y="218" width="290" height="280" fill="#AAAA46"/>
+          <text x="80" y="246" font-size="10" letter-spacing="2" fill="#1C231F">PHASE 01 · YEAR 1</text>
+          <text x="80" y="282" font-family="Newsreader" font-style="normal" font-size="24" fill="#1C231F">MMP launch</text>
+          <text x="80" y="308" font-size="11" fill="#AAAA46" letter-spacing="1" font-style="normal">Solopreneurs first.</text>
+          <line x1="80" y1="322" x2="330" y2="322" stroke="#1C231F" stroke-width="0.5"/>
+
+          <text x="80" y="344" font-size="11" fill="#1C231F" font-weight="600">Shipping</text>
+          <text x="80" y="362" font-size="11" fill="#3A4A3F">· Instant LLC formation</text>
+          <text x="80" y="378" font-size="11" fill="#3A4A3F">· Core checking + debit</text>
+          <text x="80" y="394" font-size="11" fill="#3A4A3F">· Invoicing + ACH receive</text>
+          <text x="80" y="410" font-size="11" fill="#3A4A3F">· Receipt capture + tagging</text>
+
+          <text x="80" y="434" font-size="11" fill="#1C231F" font-weight="600">Gating criteria</text>
+          <text x="80" y="452" font-size="11" fill="#3A4A3F">14K funded accounts · NPS ≥ 42</text>
+          <text x="80" y="468" font-size="11" fill="#3A4A3F">$18M revenue · CAC &lt; $380</text>
+
+          <text x="80" y="490" font-size="10" fill="#7C8579" font-style="normal">Dependency: SoFi core-banking</text>
+        </g>
+
+        <!-- Phase 02 -->
+        <g>
+          <rect x="375" y="218" width="290" height="280" fill="#F9F5EE"/>
+          <text x="395" y="246" font-size="10" letter-spacing="2" fill="#1C231F">PHASE 02 · YEARS 2–3</text>
+          <text x="395" y="282" font-family="Newsreader" font-style="normal" font-size="24" fill="#1C231F">Post-MMP</text>
+          <text x="395" y="308" font-size="11" fill="#AAAA46" letter-spacing="1" font-style="normal">Wayfinding employers.</text>
+          <line x1="395" y1="322" x2="645" y2="322" stroke="#1C231F" stroke-width="0.5"/>
+
+          <text x="395" y="344" font-size="11" fill="#1C231F" font-weight="600">Shipping</text>
+          <text x="395" y="362" font-size="11" fill="#3A4A3F">· Payroll (W-2 &amp; 1099)</text>
+          <text x="395" y="378" font-size="11" fill="#3A4A3F">· 13-week cashflow forecast</text>
+          <text x="395" y="394" font-size="11" fill="#3A4A3F">· Receivables-backed LOC</text>
+          <text x="395" y="410" font-size="11" fill="#3A4A3F">· Fraud controls + card locks</text>
+
+          <text x="395" y="434" font-size="11" fill="#1C231F" font-weight="600">Gating criteria</text>
+          <text x="395" y="452" font-size="11" fill="#3A4A3F">101K accounts · 28% cross-sell</text>
+          <text x="395" y="468" font-size="11" fill="#3A4A3F">$138M revenue · EBITDA positive</text>
+
+          <text x="395" y="490" font-size="10" fill="#7C8579" font-style="normal">Dependency: underwriting model v2</text>
+        </g>
+
+        <!-- Phase 03 -->
+        <g>
+          <rect x="690" y="218" width="290" height="280" fill="#1C231F"/>
+          <text x="710" y="246" font-size="10" letter-spacing="2" fill="#AAAA46">PHASE 03 · YEARS 4–5</text>
+          <text x="710" y="282" font-family="Newsreader" font-style="normal" font-size="24" fill="#FFFFFF">Destination</text>
+          <text x="710" y="308" font-size="11" fill="#AAAA46" letter-spacing="1" font-style="normal">Established employers.</text>
+          <line x1="710" y1="322" x2="960" y2="322" stroke="#AAAA46" stroke-width="0.5"/>
+
+          <text x="710" y="344" font-size="11" fill="#AAAA46" font-weight="600">Shipping</text>
+          <text x="710" y="362" font-size="11" fill="#DCD3BE">· Advisor + CPA on-call</text>
+          <text x="710" y="378" font-size="11" fill="#DCD3BE">· Multi-entity + consolidated</text>
+          <text x="710" y="394" font-size="11" fill="#DCD3BE">· QuickBooks / Xero sync</text>
+          <text x="710" y="410" font-size="11" fill="#DCD3BE">· Roles, SSO, audit log</text>
+
+          <text x="710" y="434" font-size="11" fill="#AAAA46" font-weight="600">Success metrics</text>
+          <text x="710" y="452" font-size="11" fill="#DCD3BE">224K accounts · 70% cost-to-income</text>
+          <text x="710" y="468" font-size="11" fill="#DCD3BE">$310M revenue · $91M EBITDA</text>
+
+          <text x="710" y="490" font-size="10" fill="#7C8579" font-style="normal">Dependency: middle-office build</text>
+        </g>
+
+        <!-- Swimlanes below: parallel tracks -->
+        <g>
+          <text x="60" y="540" font-size="10" letter-spacing="2" fill="#7C8579">PARALLEL TRACKS · ENABLE THE ROADMAP</text>
+          <line x1="60" y1="552" x2="980" y2="552" stroke="#1C231F" stroke-width="0.5"/>
+
+          <text x="60" y="576" font-size="11" fill="#1C231F" font-weight="600">Brand &amp; acquisition</text>
+          <rect x="230" y="566" width="300" height="18" fill="#AAAA46"/>
+          <rect x="540" y="566" width="280" height="18" fill="#F9F5EE"/>
+          <rect x="830" y="566" width="150" height="18" fill="#F1EAD8" stroke="#DCD3BE"/>
+          <text x="240" y="579" font-size="10.5" fill="#1C231F">Solopreneur referral + content</text>
+          <text x="550" y="579" font-size="10.5" fill="#1C231F">SMB paid + partnerships</text>
+          <text x="840" y="579" font-size="10.5" fill="#1C231F">Enterprise sales</text>
+
+          <text x="60" y="610" font-size="11" fill="#1C231F" font-weight="600">Risk &amp; compliance</text>
+          <rect x="230" y="600" width="140" height="18" fill="#AAAA46"/>
+          <rect x="380" y="600" width="440" height="18" fill="#F9F5EE"/>
+          <rect x="830" y="600" width="150" height="18" fill="#F1EAD8" stroke="#DCD3BE"/>
+          <text x="240" y="613" font-size="10.5" fill="#1C231F">KYB/KYC live</text>
+          <text x="390" y="613" font-size="10.5" fill="#1C231F">Credit underwriting + BSA/AML hardening</text>
+          <text x="840" y="613" font-size="10.5" fill="#1C231F">SOC 2 Type II</text>
+
+          <text x="60" y="644" font-size="11" fill="#1C231F" font-weight="600">Platform</text>
+          <rect x="230" y="634" width="200" height="18" fill="#AAAA46"/>
+          <rect x="440" y="634" width="380" height="18" fill="#F9F5EE"/>
+          <rect x="830" y="634" width="150" height="18" fill="#F1EAD8" stroke="#DCD3BE"/>
+          <text x="240" y="647" font-size="10.5" fill="#1C231F">Core-banking on SoFi</text>
+          <text x="450" y="647" font-size="10.5" fill="#1C231F">Forecasting + lending services</text>
+          <text x="840" y="647" font-size="10.5" fill="#1C231F">Data &amp; reporting</text>
+        </g>
+
+        <!-- Footer KPI strip -->
+        <line x1="60" y1="680" x2="980" y2="680" stroke="#DCD3BE"/>
+        <g>
+          <text x="60" y="704" font-size="10" letter-spacing="2" fill="#7C8579">RECOMMENDATION</text>
+          <text x="60" y="734" font-family="Newsreader" font-style="normal" font-size="22" fill="#AAAA46">Go.</text>
+        </g>
+        <g>
+          <text x="230" y="704" font-size="10" letter-spacing="2" fill="#7C8579">Y5 REVENUE</text>
+          <text x="230" y="734" font-family="Newsreader" font-style="normal" font-size="22" fill="#1C231F">$310M</text>
+        </g>
+        <g>
+          <text x="420" y="704" font-size="10" letter-spacing="2" fill="#7C8579">SEGMENTS</text>
+          <text x="420" y="734" font-family="Newsreader" font-style="normal" font-size="22" fill="#1C231F">3</text>
+        </g>
+        <g>
+          <text x="570" y="704" font-size="10" letter-spacing="2" fill="#7C8579">PHASES</text>
+          <text x="570" y="734" font-family="Newsreader" font-style="normal" font-size="22" fill="#1C231F">3</text>
+        </g>
+        <g>
+          <text x="710" y="704" font-size="10" letter-spacing="2" fill="#7C8579">HERO FEATURES</text>
+          <text x="710" y="734" font-family="Newsreader" font-style="normal" font-size="22" fill="#1C231F">10</text>
+        </g>
+        <g>
+          <text x="850" y="704" font-size="10" letter-spacing="2" fill="#7C8579">SCOPED IN</text>
+          <text x="850" y="734" font-family="Newsreader" font-style="normal" font-size="22" fill="#1C231F">35 wks</text>
+        </g>
+
+        <text x="60" y="764" font-size="10" fill="#7C8579">Source: SoFi + BCG X concept &amp; build-scoping sprint, 2023.</text>
+      </g>
+    </svg>
+  </div>
+  <figcaption class="figcap"><span class="n">05</span>Long-term vision roadmap — three-phase evolution from MMP launch to the destination state for established employers.</figcaption>
+</figure>
+
+
+<section class="sec">
+  <div class="sec-grid">
+    <div class="sec-label"><span class="n">03</span>The solution</div>
+    <div class="sec-body">
+      <p>
+        A <strong>three-phase build</strong> sequenced by segment readiness and revenue unlock.
+        The <em>Minimum Marketable Product</em> launches with Solopreneurs and early-adopter
+        employers — foundational banking with personalized support: spending and savings
+        accounts with competitive interest, a Business Credit-Building Card, Adaptive
+        Company Cards, an Expert Team for bankers, Customer 360 AI insights, and a Small
+        Loan Marketplace via Lantern.
+      </p>
+      <p>
+        <strong>Post-MMP</strong> serves Wayfinding Employers with a rewards business credit
+        card, Instant Cash short-term lending, Small Business Lending via white label, an
+        AI-driven retention tool, and OneStep expense approval. The <strong>Destination</strong>
+        state extends to Established Employers with expanded banking, AI Risk Monitoring
+        for bankers, Money Maximizer liquidity optimization, and SoFi planner referrals —
+        positioning Jethro as the horizontal financial partner for SMBs.
+      </p>
+    </div>
+  </div>
+</section>
+
+<hr class="sec-rule">
+
+<section class="results" id="results">
+  <div class="results-head">
+    <h2><em>Results</em></h2>
+    <span class="note">At venture-board handoff</span>
+  </div>
+  <div class="rgrid">
+    <div class="stat">
+      <span class="tag">Decision</span>
+      <span class="big"><em>Go</em></span>
+      <p>Approved with confidence across desirability (44% strong adoption intent), viability, and feasibility.</p>
+    </div>
+    <div class="stat">
+      <span class="tag">Year-5 revenue</span>
+      <span class="big"><em>$</em>310<em>M</em></span>
+      <p>Projected with SMB unit economics running ~5× consumer banking — $1,730 ARPU vs. $680.</p>
+    </div>
+    <div class="stat">
+      <span class="tag">Segments</span>
+      <span class="big">3</span>
+      <p>Validated feature set — differentiated from Mercury, Bluevine, and incumbents on the strength of the Expert Team offer.</p>
+    </div>
+    <div class="stat">
+      <span class="tag">Build-ready MMP</span>
+      <span class="big">35<em> wks</em></span>
+      <p>Four cross-functional squads; a 29-person Year 1 team scaling to 36 by Year 5.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="foot-inner">
+    <span>← <a href="index.html">All work</a></span>
+    <span>© 2026 Andrea Noble · New Jersey and New York</span>
+    <span>Next — <a href="service-oklahoma.html">Service Oklahoma</a> →</span>
+  </div>
+</footer>
+
+</body>
+</html>

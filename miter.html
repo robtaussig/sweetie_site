@@ -1,0 +1,604 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BuildMate for [Redacted National Building Materials Distributor] · Andrea Noble</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600;1,6..72,700&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFFFFF;
+  --ink:#1C231F;
+  --ink-2:#3A4A3F;
+  --muted:#7C8579;
+  --rule:#DCD3BE;
+  --accent:#AAAA46;
+  --accent-soft:#AAAA46;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+html,body{margin:0;padding:0}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:'Newsreader',Georgia,serif;
+  font-size:18px;line-height:1.6;
+  font-feature-settings:"liga","kern";
+}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--accent);color:#fff}
+
+/* ---------- nav ---------- */
+.nav{border-bottom:1px solid var(--rule);background:var(--bg)}
+.nav-inner{
+  max-width:1180px;margin:0 auto;padding:22px 40px;
+  display:flex;align-items:center;justify-content:space-between;gap:24px;
+}
+.logo img{height:26px;width:auto;display:block}
+.nav-links{display:flex;gap:28px}
+.nav-links a{
+  font-family:'Work Sans',sans-serif;font-weight:600;
+  font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink-2);
+}
+.nav-links a:hover{color:var(--accent)}
+
+/* ---------- hero ---------- */
+.hero{max-width:1180px;margin:0 auto;padding:47px 40px 27px}
+.back{
+  font-family:'Work Sans',sans-serif;font-weight:600;
+  font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--muted);
+  display:inline-block;margin-bottom:36px;
+}
+.back:hover{color:var(--accent)}
+
+.hero-grid{
+  display:grid;grid-template-columns:200px 1fr;gap:60px;align-items:start;
+}
+.hero-aside{min-width:0}
+.meta-row{
+  display:flex;flex-direction:column;gap:3px;
+  font-family:'Newsreader',serif;font-style:normal;font-weight:400;
+  font-size:15px;color:var(--muted);margin:0 0 28px;
+}
+.meta-row span:first-child{
+  color:var(--accent);font-style:normal;
+  font-family:'Work Sans',sans-serif;font-size:12px;letter-spacing:.14em;
+  text-transform:uppercase;margin-bottom:6px;
+}
+
+.facts{
+  display:flex;flex-direction:column;gap:0;margin:0;
+  border-top:1px solid var(--ink);
+}
+.facts > div{padding:18px 0;border-bottom:1px solid var(--rule)}
+.facts dt{
+  font-family:'Newsreader',serif;font-style:normal;font-weight:400;
+  font-size:14px;color:var(--muted);margin-bottom:6px;
+}
+.facts dd{margin:0;font-family:'Newsreader',serif;font-size:17px;line-height:1.35;color:var(--ink)}
+
+.hero-main{min-width:0}
+.kicker{
+  font-family:'Newsreader',serif;font-style:normal;font-weight:400;
+  font-size:17px;color:var(--accent);margin:0 0 18px;
+}
+.hero h1{
+  font-family:'Newsreader',serif;font-weight:600;
+  font-size:clamp(44px,6.2vw,88px);line-height:1;letter-spacing:-.025em;
+  margin:0 0 32px;max-width:17ch;color:var(--ink);
+}
+.hero h1 em{font-style:normal;font-weight:600;color:var(--accent)}
+
+.lede{
+  font-family:'Newsreader',serif;font-weight:600;font-style:normal;
+  font-size:clamp(20px,2.2vw,26px);line-height:1.45;color:#000;
+  max-width:58ch;margin:0;
+}
+
+/* ---------- figure ---------- */
+.figure{max-width:1180px;margin:60px auto;padding:0 40px}
+.figure .frame{
+  background:#F1EAD8;border:1px solid var(--rule);
+  padding:48px 32px;
+}
+.figure .frame--video{padding:0;background:#000;border:0}
+.video-wrap{position:relative;width:100%;aspect-ratio:16/9;background:#000}
+.video-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
+.video-poster{
+  position:absolute;inset:0;width:100%;height:100%;
+  background-size:cover;background-position:center;
+  border:0;padding:0;margin:0;cursor:pointer;
+  display:flex;align-items:flex-end;justify-content:flex-start;
+  overflow:hidden;
+}
+.video-poster::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,.55) 100%);
+  transition:opacity .25s ease;
+}
+.video-poster:hover::after{opacity:.75}
+.video-poster .play{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:78px;height:78px;border-radius:50%;
+  background:rgba(255,255,255,.95);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 10px 30px rgba(0,0,0,.35);
+  transition:transform .25s ease, background .25s ease;
+}
+.video-poster:hover .play{transform:translate(-50%,-50%) scale(1.06);background:var(--accent)}
+.video-poster:hover .play svg path{fill:#fff}
+.video-poster .play svg{width:28px;height:28px;display:block;margin-left:4px}
+.video-poster .play svg path{fill:var(--ink);transition:fill .25s ease}
+.video-poster .cta{
+  position:relative;z-index:1;margin:24px 28px;
+  font-family:'Newsreader',serif;font-style:normal;font-weight:400;
+  font-size:16px;color:#FFFFFF;letter-spacing:.01em;
+  text-shadow:0 1px 8px rgba(0,0,0,.4);
+}
+.figcap{
+  margin-top:14px;
+  font-family:'Newsreader',serif;font-style:normal;font-weight:400;
+  font-size:15px;color:var(--muted);
+}
+.figcap .n{color:var(--accent);font-style:normal;margin-right:10px}
+
+/* ---------- section ---------- */
+.sec{max-width:1180px;margin:0 auto;padding:47px 40px}
+.sec-rule{
+  max-width:1180px;margin:0 auto;padding:0 40px;border:0;
+  height:1px;background:transparent;position:relative;
+}
+.sec-rule::before{
+  content:"";position:absolute;left:40px;right:40px;top:0;
+  height:1px;background:#E3DCCA;
+}
+.sec-grid{display:grid;grid-template-columns:200px 1fr;gap:60px;align-items:start}
+.sec-label{
+  position:sticky;top:24px;
+  font-family:'Newsreader',serif;font-weight:400;font-size:22px;line-height:1.2;color:var(--ink);
+}
+.sec-label .n{
+  display:block;font-family:'Newsreader',serif;font-style:normal;font-weight:600;
+  font-size:52px;letter-spacing:-.02em;color:var(--accent);line-height:1;margin-bottom:10px;
+}
+.sec-body{max-width:68ch}
+.sec-body p{margin:0 0 22px}
+.sec-body p strong{font-weight:400;color:var(--ink)}
+.sec-body p em{color:var(--ink);font-style:normal;font-weight:600}
+.sec-body p.placeholder{padding:12px 16px;border:1px dashed var(--muted);color:var(--muted);font-family:'Work Sans',sans-serif;font-size:14px;letter-spacing:.04em}
+.role-list{list-style:none;margin:0;padding:0}
+.role-list li{position:relative;padding:0 0 18px 26px;margin:0 0 18px;border-bottom:1px solid var(--rule)}
+.role-list li:last-child{border-bottom:0;margin-bottom:0;padding-bottom:0}
+.role-list li::before{content:"";position:absolute;left:0;top:.72em;width:12px;height:1px;background:var(--accent)}
+
+/* ---------- pull quote ---------- */
+.pull{max-width:900px;margin:13px auto;padding:40px 40px;text-align:center}
+.pull blockquote{
+  margin:0;font-family:'Newsreader',serif;font-weight:600;font-style:normal;
+  font-size:clamp(26px,3.2vw,40px);line-height:1.3;letter-spacing:-.01em;color:var(--ink);
+}
+.pull blockquote::before,
+.pull blockquote::after{color:var(--accent);font-size:1.3em;line-height:0}
+.pull blockquote::before{content:"“";margin-right:4px;vertical-align:-.25em}
+.pull blockquote::after{content:"”";margin-left:2px;vertical-align:-.25em}
+.pull cite{
+  display:block;margin-top:24px;font-style:normal;font-weight:400;
+  font-family:'Newsreader',serif;font-size:15px;color:var(--muted);
+}
+
+/* ---------- results ---------- */
+.results{max-width:1180px;margin:0 auto;padding:60px 40px 80px}
+.results-head{
+  display:flex;justify-content:space-between;align-items:baseline;gap:20px;flex-wrap:wrap;
+  border-top:1px solid #E3DCCA;padding:16px 0;margin-bottom:40px;
+}
+.results-head h2{
+  margin:0;font-family:'Newsreader',serif;font-weight:600;
+  font-size:clamp(32px,4vw,52px);letter-spacing:-.02em;
+}
+.results-head h2 em{font-style:normal;color:var(--accent);font-weight:600}
+.results-head .note{
+  font-family:'Newsreader',serif;font-style:normal;font-size:15px;color:var(--muted);
+}
+
+.rgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--rule)}
+.stat{padding:36px 30px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.stat:first-child{padding-left:0}
+.stat:last-child{border-right:0;padding-right:0}
+.stat .tag{
+  display:block;margin-bottom:14px;
+  font-family:'Newsreader',serif;font-style:normal;font-weight:400;
+  font-size:15px;color:var(--muted);
+}
+.stat .big{
+  font-family:'Newsreader',serif;font-weight:600;
+  font-size:clamp(46px,5.6vw,76px);line-height:1;letter-spacing:-.025em;color:var(--ink);
+  display:block;margin-bottom:12px;
+}
+.stat .big em{font-style:normal;color:var(--ink);font-weight:600}
+.stat .big em.to{
+  font-family:'Newsreader',serif;font-style:normal;font-weight:600;
+  font-size:.6em;color:var(--ink);margin:0 .04em;vertical-align:.18em;
+}
+.stat p{margin:0;font-size:15px;line-height:1.5;color:var(--ink-2)}
+
+/* ---------- foot ---------- */
+.foot{border-top:1px solid var(--rule);padding:24px 0}
+.foot-inner{
+  max-width:1180px;margin:0 auto;padding:0 40px;
+  display:flex;justify-content:space-between;align-items:center;gap:20px;
+  font-family:'Newsreader',serif;font-style:normal;font-size:15px;color:var(--muted);
+}
+.foot a{color:var(--ink);font-style:normal}
+.foot a:hover{color:var(--accent)}
+
+/* ---------- SVG illustrations ---------- */
+.ill{width:100%;height:auto;display:block}
+.ill text{font-family:'Newsreader',serif}
+.ill .label{font-family:'Newsreader',serif;font-style:normal;font-weight:400;font-size:13px;fill:var(--muted)}
+.ill .num{font-family:'Newsreader',serif;font-weight:600;letter-spacing:-.02em;fill:var(--ink)}
+.ill .accent{fill:var(--accent)}
+
+.jump-results{display:inline-flex;align-items:center;gap:10px;margin-top:28px;font-family:'Work Sans',sans-serif;font-weight:600;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);transition:color .2s ease}
+.jump-results:hover{color:var(--ink)}
+.jump-results .arr{display:inline-block;font-family:'Newsreader',serif;font-style:normal;font-weight:600;font-size:18px;letter-spacing:0;text-transform:none;transform:translateY(1px);transition:transform .2s ease}
+.jump-results:hover .arr{transform:translateY(4px)}
+
+@media (max-width:820px){
+  .sec-grid{grid-template-columns:1fr;gap:24px}
+  .sec-label{position:static}
+  .hero-grid{grid-template-columns:1fr;gap:32px}
+  .rgrid{grid-template-columns:1fr 1fr}
+  .stat{padding:36px 30px}
+  .stat:nth-child(odd){padding-left:0;padding-right:30px;border-right:1px solid var(--rule)}
+  .stat:nth-child(even){padding-left:30px;padding-right:0;border-right:0}
+  .hero h1{font-size:clamp(44px,9vw,72px)}
+  .figure .frame{padding:28px 18px}
+}
+
+em,i{font-style:normal}
+
+.hero-main .kicker{color:#404040}
+
+/* ---------- tldr ---------- */
+.tldr-wrap{max-width:1180px;margin:0 auto;padding:20px 40px 0}
+.tldr{
+  border:1px solid #DDDDB5;background:#F2F2E3;
+  padding:28px 32px;
+  display:grid;grid-template-columns:200px minmax(0,calc(68ch - 32px)) 1fr;gap:28px;align-items:baseline;
+}
+.tldr-label{
+  font-family:'Work Sans',sans-serif;font-weight:600;font-size:12px;
+  letter-spacing:.16em;text-transform:uppercase;color:#76762C;
+}
+.tldr p{margin:0;font-family:'Newsreader',serif;font-weight:600;font-size:20px;line-height:1.5;color:var(--ink)}
+@media (max-width:820px){
+  .tldr{grid-template-columns:1fr;gap:12px;padding:22px 20px}
+  .tldr-wrap{padding:16px 20px 0}
+}
+
+/* ---------- results box ---------- */
+.results{
+  width:calc(100% - 80px);max-width:1100px;margin:60px auto;
+  padding:40px 32px 44px;
+  background:#F2F2E3;border:1px solid #DDDDB5;
+}
+.results-head{border-top:0;padding-top:0}
+.results .stat{border-bottom:0;padding-bottom:8px}
+@media (max-width:820px){
+  .results{width:calc(100% - 40px);padding:28px 20px 32px}
+}
+.rgrid.rgrid--3{grid-template-columns:repeat(3,1fr)}
+.rgrid--3 .stat:nth-child(3){border-right:0}
+@media (max-width:820px){.rgrid.rgrid--3{grid-template-columns:1fr}.rgrid--3 .stat{padding:28px 0!important;border-right:0!important}}
+
+/* ---------- tldr: solid ---------- */
+.tldr{background:var(--accent);border-color:var(--accent);color:#fff}
+.tldr-label{color:#fff;display:flex;flex-direction:column;gap:14px;align-self:start;font-size:22px;letter-spacing:.12em}
+.tldr-label svg{width:34px;height:34px;display:block}
+.tldr p{font-family:'Work Sans',sans-serif;font-weight:600;font-size:17px;line-height:1.55;color:#fff}
+@media (max-width:820px){.tldr-label{flex-direction:row;align-items:center}.tldr-label svg{width:26px;height:26px}}
+
+/* ---------- neutral grey rules ---------- */
+.figure .frame{border-color:#D9D9D9}
+.sec-rule::before{background:#D9D9D9}
+
+.stat .big .cur{font-size:.55em;vertical-align:.5em;margin:0 .03em 0 .02em}
+.rgrid{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media (max-width:820px){.rgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.results .stat .tag{white-space:nowrap;font-size:clamp(11.5px,1.12vw,15px)}
+@media (max-width:820px){.results .stat .tag{font-size:clamp(10.5px,2.7vw,15px)}}
+.stat .big .unit{font-size:.62em;letter-spacing:-.015em}
+/* results: scale big figures to their column so they never overflow */
+.results .rgrid{container-type:inline-size}
+.results .stat .big{font-size:min(68px,calc((25cqi - 60px) * .27));white-space:nowrap}
+@media (max-width:820px){.results .stat .big{font-size:min(68px,calc((50cqi - 30px) * .27))}.results .stat .big.long{font-size:min(62px,calc((50cqi - 30px) * .21))}}
+/* consistent spacing: text -> figure matches figure -> figure */
+.sec-body > :last-child{margin-bottom:0}
+.sec:has(+ .figure){padding-bottom:0}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="logo" href="index.html">
+      <img src="../assets/brand/logo.png" alt="Andrea Noble Design">
+    </a>
+    <nav class="nav-links">
+      <a href="index.html#work">Work</a>
+      <a href="index.html#about">About</a>
+      <a href="../assets/AndreaNoble_Resume.pdf" target="_blank" rel="noopener">Resume</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <a class="back" href="index.html">← All work</a>
+  <div class="hero-grid">
+    <aside class="hero-aside">
+      <dl class="facts">
+        <div><dt>Project Name</dt><dd>BuildMate for [Redacted National Building Materials Distributor]</dd></div>
+        <div><dt>Role</dt><dd>Research and Design Lead</dd></div>
+        <div><dt>Phase</dt><dd>Innovation Sprint</dd></div>
+        <div><dt>Timeframe</dt><dd>2022</dd></div>
+      </dl>
+    </aside>
+    <div class="hero-main">
+      <h1>Material selection, takeoff creation, and delivery scheduling <em>made easy.</em></h1>
+      <p class="lede">
+        The processes required for new-home construction are opaque, fragmented, and almost
+        entirely manual. BuildMate is a digital platform designed to give builders, GCs,
+        subcontractors, procurement teams, and homebuyers a shared, real-time view to build trust.
+      </p>
+      <a class="jump-results" href="#results">Jump to results <span class="arr">↓</span></a>
+    </div>
+  </div>
+</section>
+
+<div class="tldr-wrap">
+  <aside class="tldr" aria-label="TLDR">
+    <div class="tldr-label">TLDR:<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"/></svg></div>
+    <p>For this project, I led a body of research that included 77 national customer interviews, a 1,200-participant survey, a full-day ideation session, the development and testing of 5 concepts, and the culmination of one AI-enabled POC. I pushed to shift industry norms from opacity to transparency, and shed light on the early-stage needs of customers that are typically ignored by industry veterans.</p>
+  </aside>
+</div>
+
+<section class="sec">
+  <div class="sec-grid">
+    <div class="sec-label"><span class="n">01</span>The objective</div>
+    <div class="sec-body">
+      <p>
+        After over 100 acquisitions since being founded in 2009, [Redacted National Building Materials Distributor] realized it lacked a
+        clear understanding of its brands’ customers and their needs.
+      </p>
+      <p>
+        They tasked us to research the needs of architects, builders, GCs, and sub-contractors
+        across their national footprint to identify <em>key segments, distinct journey maps,</em>
+        and where shared pain points create new opportunities for new digital platforms.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Figure 01 — Our challenge (slide) -->
+<figure class="figure">
+  <div class="frame" style="padding:0;background:#fff">
+    <img src="../assets/images/miter_challenge-slide.png" alt="Our challenge: How might we better understand the needs and behaviors of customers to reimagine the new home building journey and strengthen [Redacted National Building Materials Distributor]'s competitive advantage? With definitions of customers, reimagine, new home building journey, and competitive advantage." style="width:100%;height:auto;display:block">
+  </div>
+  <figcaption class="figcap"><span class="n">01</span>Our challenge — the “how might we” statement that framed the work, with what each key term meant for [Redacted National Building Materials Distributor].</figcaption>
+</figure>
+
+
+<hr class="sec-rule">
+
+<section class="sec" style="padding-bottom:0">
+  <div class="sec-grid">
+    <div class="sec-label"><span class="n">02</span>What we did</div>
+    <div class="sec-body">
+      <p>
+        We ran <em>77 qualitative interviews</em> in the Northeast, Midwest, and Southeast spanning
+        builders, architects, procurement leads, GCs, and subcontractors across custom-semi-custom,
+        multi-family, and production builds. After validating our findings with a
+        <em>1,200-participant nationwide survey,</em> we mapped distinct archetypes, personas, and
+        journey maps through the 12+ month build cycle.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Figure 02 — Research footprint (slide) -->
+<figure class="figure">
+  <div class="frame" style="padding:0;background:#fff">
+    <img src="../assets/images/miter_research-footprint-slide-v2.png" alt="Research footprint. Sprint 1: 77 customer interviews across the West (30), Midwest (21), and Southeast (26), mapped by state; 39 existing and 38 non-[Redacted National Building Materials Distributor] customers; build types 18 custom, 6 semi-custom, 19 multi-family, 33 production; roles including 13 GC owners, 9 architects, 15 building executives, 16 procurement executives, 9 GCs employed by builders, and 15 subcontractors. Sprint 2: research objectives and activities — a nationwide survey of 1,200 customers and concept testing with 8 repeat customers." style="width:100%;height:auto;display:block">
+  </div>
+  <figcaption class="figcap"><span class="n">02</span>Research footprint — 77 customer interviews across regions, build types, and roles in Sprint 1, followed by a nationwide survey and concept testing in Sprint 2.</figcaption>
+</figure>
+<!-- Figure 03 — Our approach (slide) -->
+<figure class="figure">
+  <div class="frame" style="padding:0;background:#fff">
+    <img src="../assets/images/miter_approach-slide-v6.png" alt="We took a multi-pronged approach to understand [Redacted National Building Materials Distributor] customers: market landscape, customer journey, personas, and opportunity areas — each shown with thumbnails of the work." style="width:100%;height:auto;display:block">
+  </div>
+  <figcaption class="figcap"><span class="n">03</span>Research deliverables — market landscape, customer journey, personas, and opportunity areas.</figcaption>
+</figure>
+
+<!-- Figure 04 — Opportunity areas & pain points (slide) -->
+<figure class="figure">
+  <div class="frame" style="padding:0;background:#fff">
+    <img src="../assets/images/miter_opportunity-areas-slide-v3.png" alt="Opportunity Area and Pain Point Overview: six opportunity areas across planning, contracting and buying, constructing, and billing — creating shared understanding with customers; direct and transparent procurement; more accurate planning; visibility around project schedules; availability of quality labor; and optimizing back-office processes — each with the pain points it addresses." style="width:100%;height:auto;display:block">
+  </div>
+  <figcaption class="figcap"><span class="n">04</span>Opportunity areas and pain points — six areas mapped to the build journey, with the three most direct to [Redacted National Building Materials Distributor]'s core business in the middle.</figcaption>
+</figure>
+
+<section class="pull">
+  <blockquote>
+    Suppliers tend to prioritize bigger/national accounts. Mid-size builders
+    don't have visibility into supply availability.
+  </blockquote>
+  <cite>Production, Superintendent at Adam Homes</cite>
+</section>
+
+<section class="sec" style="padding-top:0">
+  <div class="sec-grid">
+    <div class="sec-label" aria-hidden="true"></div>
+    <div class="sec-body">
+      <p>
+        We conducted a robust synthesis to outline key pain points and opportunity areas.
+        From here, we facilitated a full-day workshop with clients based on the 6 opportunity areas
+        cited above. This resulted in <em>more than 100 ideas</em> to address the needs of [Redacted National Building Materials Distributor]’s
+        customers, which we ultimately narrowed to <em>5 concepts</em> that we built out and tested
+        at a higher fidelity.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Figure 05 — Five solutions (slide) -->
+<figure class="figure">
+  <div class="frame" style="padding:0;background:#fff">
+    <img src="../assets/images/miter_solutions-slide-v3.png" alt="We developed 5 solutions: Takeoff360, a whole-home takeoffs generator; Material ID, a platform to view, compare and select materials; SmartSchedule, real-time tracking and updates for job stakeholders; PreBuilt, pre-assembled components in high-margin categories; and SkillBuilders, a stage-gated training program to grow the labor force." style="width:100%;height:auto;display:block">
+  </div>
+  <figcaption class="figcap"><span class="n">05</span>The five concepts — Takeoff360, Material ID, SmartSchedule, PreBuilt, and SkillBuilders.</figcaption>
+</figure>
+
+<section class="sec" style="padding-top:20px">
+  <div class="sec-grid">
+    <div class="sec-label" aria-hidden="true"></div>
+    <div class="sec-body">
+      <p>
+        After testing these concepts with customers, we narrowed in on <em>Material ID, Takeoff 360,
+        and SmartSchedule</em> — ultimately combining these products into a super-app for full service.
+        We then conducted a competitive scan that plotted players in the building-materials industry,
+        in order to identify where differentiation is defensible.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Figure 06 — Competitive landscape (slide) -->
+<figure class="figure">
+  <div class="frame" style="padding:0;background:#fff">
+    <img src="../assets/images/miter_competitive-slide-v2.png" alt="According to customers, the industry needs a comprehensive solution: a feature comparison of [Redacted], Builders FirstSource Paradigm and myBLDR, 84 Lumber, ABC Supply, and Beacon versus BuildMate, which covers all ten features across Material ID, Takeoff360, and SmartSchedule." style="width:100%;height:auto;display:block">
+  </div>
+  <figcaption class="figcap"><span class="n">06</span>Competitive landscape — no existing player covers the full set of features customers asked for; BuildMate does.</figcaption>
+</figure>
+
+
+<hr class="sec-rule">
+
+<section class="sec">
+  <div class="sec-grid">
+    <div class="sec-label"><span class="n">03</span>My role</div>
+    <div class="sec-body">
+      <ul class="role-list">
+        <li>Developed research plan for discovery in 3 key US markets, encompassing 77 customers across segments</li>
+        <li>Oversaw facilitation and synthesis of qualitative interviews, and developed quantitative survey based on these findings</li>
+        <li>Developed and led an ideation workshop with our clients, resulting in over 100 ideas</li>
+        <li>Led concept and feature development for BuildMate, including our pitch content for executives and our testing roll-out</li>
+        <li>Challenged the team to explore concepts that push “expected” boundaries by creating transparency between providers and customers in a traditionally opaque industry</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<hr class="sec-rule">
+
+<section class="sec">
+  <div class="sec-grid">
+    <div class="sec-label"><span class="n">04</span>The solution</div>
+    <div class="sec-body">
+      <p>
+        The concept landed as three connected solution pillars covering the moments where the
+        build most often breaks down. <em>Material ID</em> turns sales teams’ knowledge of products
+        and substitutions into a searchable, point-and-place tool. <em>Takeoff 360</em> aggregates
+        whole-home material lists and value-engineering options so estimates are faster, more
+        accurate, and collaborative. <em>Smart Schedule</em> connects delivery workflows to jobsites
+        with live communication and a delivery tracker that customers can actually see.
+      </p>
+      <p>
+        Each pillar was sequenced into a crawl-walk-run roadmap — starting with manual and
+        lightly-tooled versions that can be adopted by [Redacted National Building Materials Distributor] today, then layering in MDM
+        migration, ERP integrations, and a logistics backend to unlock analytics,
+        recommendations, and automation tiers at scale.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Figure 07 — BuildMate concept (slide) -->
+<figure class="figure">
+  <div class="frame" style="padding:0;background:#fff">
+    <img src="../assets/images/miter_buildmate-slide-v2.png" alt="BuildMate: a digitally-enabled set of services that simplify the building material procurement process. Three pillars — Material ID for material searching, selection, and alternative product identification; Takeoff360 for whole-home takeoffs with visualization and alerts; and SmartSchedule for seamless scheduling, delivery, and returns." style="width:100%;height:auto;display:block">
+  </div>
+  <figcaption class="figcap"><span class="n">07</span>BuildMate — one digitally-enabled service bringing Material ID, Takeoff360, and SmartSchedule together to simplify building material procurement end to end.</figcaption>
+</figure>
+
+<!-- Figure 08 — Crawl-walk-run roadmap (slide) -->
+<figure class="figure">
+  <div class="frame" style="padding:0;background:#fff">
+    <img src="../assets/images/miter_roadmap-slide-v3.png" alt="Crawl-walk-run roadmap for BuildMate's three pillars — Material ID, Takeoff 360, and Smart Schedule — showing each feature by stage, with tech leverage points for MDM migration, core ERP integrations, and a logistics and inventory backend." style="width:100%;height:auto;display:block">
+  </div>
+  <figcaption class="figcap"><span class="n">08</span>Crawl-walk-run roadmap — each solution pillar sequenced by stage, with the tech leverage points that unlock the next step.</figcaption>
+</figure>
+
+<hr class="sec-rule">
+
+<section class="results" id="results">
+  <div class="results-head">
+    <h2><em>Results</em></h2>
+    <span class="note">At concept handoff</span>
+  </div>
+  <div class="rgrid">
+    <div class="stat">
+      <span class="tag">Estimated Incremental Revenue</span>
+      <span class="big">~<span class="cur">$</span>150<em>m</em></span>
+      <p>For Material ID.</p>
+    </div>
+    <div class="stat">
+      <span class="tag">Estimated Incremental Revenue</span>
+      <span class="big">~<span class="cur">$</span>160<em>m</em></span>
+      <p>For Takeoff 360.</p>
+    </div>
+    <div class="stat">
+      <span class="tag">Estimated Incremental Revenue</span>
+      <span class="big">~<span class="cur">$</span>275<em>m</em></span>
+      <p>For SmartSchedule.</p>
+    </div>
+    <div class="stat">
+      <span class="tag">Next Step</span>
+      <span class="big">3</span>
+      <p>Concepts approved for internal build at [Redacted National Building Materials Distributor].</p>
+    </div>
+  </div>
+</section>
+
+<!-- Figure 09 — Concept demo video -->
+<figure class="figure">
+  <div class="frame" style="padding:0;background:#000;border:0">
+    <video controls preload="metadata" playsinline style="width:100%;height:auto;display:block">
+      <source src="../assets/video/miter-demo.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+  <figcaption class="figcap"><span class="n">09</span>Rough POC demo for Material ID — a searchable material database across manufacturers, to ease sales and enable transparent dialogue with customers.</figcaption>
+</figure>
+
+
+</main>
+
+<footer class="foot">
+  <div class="foot-inner">
+    <span>← <a href="index.html">All work</a></span>
+    <span>© 2026 Andrea Noble · New Jersey and New York</span>
+    <span>Next — <a href="service-oklahoma.html">Service Oklahoma</a> →</span>
+  </div>
+</footer>
+
+</body>
+</html>
